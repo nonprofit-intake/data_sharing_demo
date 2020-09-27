@@ -5,27 +5,39 @@ function App() {
   const [lastName, setLastName] = useState("");
   const [ssn, setSSN] = useState("");
   const [matches, setMatches] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
-  const fetchMatches = () => {
+  const fetchMatches = (e) => {
+    setIsLoading(true);
+    e.preventDefault();
+
+    const data = {
+      last_name: lastName.trim().split(","),
+      ssn: ssn.trim().split(","),
+    }
+
     fetch(
       "https://3yk0fzdvdh.execute-api.us-east-1.amazonaws.com/default/return_user_info",
       {
         method: "POST",
+        body: JSON.stringify(data),
       }
     )
-      // .then((response) => response.json())
+      .then((response) => response.json())
       .then((response) => {
         setMatches(response);
       })
       .catch((err) => {
         console.log("error", err);
       });
+
+    setIsLoading(false);
   };
 
   return (
     <div className="App">
       <header>Test</header>
-      <form className="inputs">
+      <form className="inputs" onSubmit={fetchMatches}>
         <label htmlFor="">
           Last Name(s):
           <input
@@ -47,8 +59,7 @@ function App() {
         <button type="submit">Submit</button>
       </form>
       <div className="outputs">
-        <p>{lastName}</p>
-        <p>{ssn}</p>
+        {isLoading ? (<p>loading....</p>) : JSON.stringify(matches)}
       </div>
     </div>
   );
