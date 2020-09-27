@@ -12,9 +12,11 @@ function App() {
     e.preventDefault();
 
     const data = {
-      last_name: lastName.trim().split(","),
-      ssn: ssn.trim().split(","),
-    }
+      last_name: lastName.split(",").map(s => s.trim()),
+      ssn: ssn.split(",").map(s => s.trim()),
+    };
+
+    console.log(JSON.stringify(data))
 
     fetch(
       "https://3yk0fzdvdh.execute-api.us-east-1.amazonaws.com/default/return_user_info",
@@ -23,15 +25,18 @@ function App() {
         body: JSON.stringify(data),
       }
     )
-      .then((response) => response.json())
       .then((response) => {
+        console.log(response);
+        return response.json();
+      })
+      .then((response) => {
+        console.log(response);
+        setIsLoading(false);
         setMatches(response);
       })
       .catch((err) => {
         console.log("error", err);
       });
-
-    setIsLoading(false);
   };
 
   return (
@@ -59,7 +64,7 @@ function App() {
         <button type="submit">Submit</button>
       </form>
       <div className="outputs">
-        {isLoading ? (<p>loading....</p>) : JSON.stringify(matches)}
+        {isLoading ? <p>loading....</p> : JSON.stringify(matches)}
       </div>
     </div>
   );
