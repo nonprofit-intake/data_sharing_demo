@@ -4,6 +4,23 @@ import "./App.css";
 function App() {
   const [lastName, setLastName] = useState("");
   const [ssn, setSSN] = useState("");
+  const [matches, setMatches] = useState({});
+
+  const fetchMatches = () => {
+    fetch(
+      "https://3yk0fzdvdh.execute-api.us-east-1.amazonaws.com/default/return_user_info",
+      {
+        method: "POST",
+      }
+    )
+      // .then((response) => response.json())
+      .then((response) => {
+        setMatches(response);
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  };
 
   return (
     <div className="App">
