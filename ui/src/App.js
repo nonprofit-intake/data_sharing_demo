@@ -12,11 +12,11 @@ function App() {
     e.preventDefault();
 
     const data = {
-      last_name: lastName.split(",").map(s => s.trim()),
-      ssn: ssn.split(",").map(s => s.trim()),
+      last_name: lastName.split(",").map((s) => s.trim()),
+      ssn: ssn.split(",").map((s) => s.trim()),
     };
 
-    console.log(JSON.stringify(data))
+    console.log(JSON.stringify(data));
 
     fetch(
       "https://3yk0fzdvdh.execute-api.us-east-1.amazonaws.com/default/return_user_info",
@@ -41,9 +41,11 @@ function App() {
 
   return (
     <div className="App">
-      <header>Test</header>
+      <header>
+        <h1>FamProm Data Sharing API</h1>
+      </header>
       <form className="inputs" onSubmit={fetchMatches}>
-        <label htmlFor="">
+        <label>
           Last Name(s):
           <input
             type="text"
@@ -52,7 +54,7 @@ function App() {
             onChange={(event) => setLastName(event.target.value)}
           />
         </label>
-        <label htmlFor="">
+        <label>
           SSN(s):
           <input
             type="text"
@@ -64,6 +66,7 @@ function App() {
         <button type="submit">Submit</button>
       </form>
       <div className="outputs">
+        <h2>Results:</h2>
         {isLoading ? <p>loading....</p> : JSON.stringify(matches)}
       </div>
     </div>
