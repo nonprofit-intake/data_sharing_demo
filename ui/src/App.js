@@ -5,11 +5,12 @@ import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 function App() {
   const [lastName, setLastName] = useState("");
   const [ssn, setSSN] = useState("");
-  const [matches, setMatches] = useState({});
+  const [matches, setMatches] = useState({"matches": [], "partial_matches": []});
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchMatches = (e) => {
@@ -57,7 +58,7 @@ function App() {
         </Navbar.Brand>
         <h2>Data Sharing API</h2>
       </Navbar>
-      <Form onSubmit={fetchMatches}>
+      <Form className="matchForm" onSubmit={fetchMatches}>
         <Form.Group>
           <Form.Label>Last Name(s)</Form.Label>
           <Form.Control
@@ -83,7 +84,25 @@ function App() {
       </Form>
       <div className="resultsContainer">
         <h2>Results:</h2>
-        {isLoading ? <p>loading....</p> : JSON.stringify(matches)}
+        {isLoading ? (
+          <p>loading....</p>
+        ) : (
+          matches.matches.map((match, i) => (
+            <Card
+              bg="success"
+              key={i}
+              // text={variant.toLowerCase() === 'light' ? 'dark' : 'white'}
+              // style={{ width: '18rem' }}
+            >
+              <Card.Header>Full Match</Card.Header>
+              <Card.Body>
+                <Card.Text>
+                  {JSON.stringify(match)}
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          ))
+        )}
       </div>
     </Container>
   );

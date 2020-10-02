@@ -21,6 +21,10 @@
   width: 5.5em;
 }
 
+.matchForm {
+  margin-bottom: 1.5em;
+}
+
 .resultsContainer {
   /* border: 1px solid grey; */
 }
