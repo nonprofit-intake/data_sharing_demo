@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
 
+import Container from "react-bootstrap/Container"
+import Navbar from "react-bootstrap/Navbar";
+
 function App() {
   const [lastName, setLastName] = useState("");
   const [ssn, setSSN] = useState("");
@@ -40,10 +43,13 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <header className="nav">
-        <h1>FamProm Data Sharing API</h1>
-      </header>
+    <Container className="container">
+      <Navbar className="header">
+        <Navbar.Brand href="https://www.familypromiseofspokane.org/">
+          <img alt="" src={require("./fp_logo.png")} width="300" />
+        </Navbar.Brand>
+          Data Sharing API
+      </Navbar>
       <form className="inputMenu" onSubmit={fetchMatches}>
         <label>
           Last Name(s):
@@ -69,7 +75,7 @@ function App() {
         <h2>Results:</h2>
         {isLoading ? <p>loading....</p> : JSON.stringify(matches)}
       </div>
-    </div>
+    </Container>
   );
 }
 
