@@ -40,11 +40,11 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header>
+    <div className="container">
+      <header className="nav">
         <h1>FamProm Data Sharing API</h1>
       </header>
-      <form className="inputs" onSubmit={fetchMatches}>
+      <form className="inputMenu" onSubmit={fetchMatches}>
         <label>
           Last Name(s):
           <input
@@ -65,7 +65,7 @@ function App() {
         </label>
         <button type="submit">Submit</button>
       </form>
-      <div className="outputs">
+      <div className="resultsContainer">
         <h2>Results:</h2>
         {isLoading ? <p>loading....</p> : JSON.stringify(matches)}
       </div>

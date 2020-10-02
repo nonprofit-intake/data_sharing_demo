@@ -1,19 +1,24 @@
-.App {
+.container {
   height: 100vh;
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   align-items: center;
+  /* background: #000000; */
 }
 
-.inputs {
+.nav {
+  
+}
+
+.inputMenu {
   width: 30em;
   /* border: 1px solid grey; */
   display: flex;
   flex-direction: column;
 }
 
-.outputs {
+.resultsContainer {
   /* border: 1px solid grey; */
 }
