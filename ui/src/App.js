@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "./App.css";
 
-import Container from "react-bootstrap/Container"
+import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 function App() {
   const [lastName, setLastName] = useState("");
@@ -48,29 +50,32 @@ function App() {
         <Navbar.Brand href="https://www.familypromiseofspokane.org/">
           <img alt="" src={require("./fp_logo.png")} width="300" />
         </Navbar.Brand>
-          Data Sharing API
+        <h2>Data Sharing API</h2>
       </Navbar>
-      <form className="inputMenu" onSubmit={fetchMatches}>
-        <label>
-          Last Name(s):
-          <input
+      <Form className="inputMenu" onSubmit={fetchMatches}>
+      <Form.Group>
+          <Form.Label>Last Name(s)</Form.Label>
+          <Form.Control
             type="text"
             name="lastName"
+            placeholder="Separate multiple last names with a comma"
             value={lastName}
             onChange={(event) => setLastName(event.target.value)}
           />
-        </label>
-        <label>
-          SSN(s):
-          <input
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>SSN(s)</Form.Label>
+          <Form.Control
             type="text"
             name="ssn"
+            placeholder="Separate multiple SSNs with a comma"
             value={ssn}
             onChange={(event) => setSSN(event.target.value)}
           />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
+          <Form.Text>*Last name order must match SSN order.</Form.Text>
+        </Form.Group>
+        <Button type="submit">Find Matches</Button>
+      </Form>
       <div className="resultsContainer">
         <h2>Results:</h2>
         {isLoading ? <p>loading....</p> : JSON.stringify(matches)}
