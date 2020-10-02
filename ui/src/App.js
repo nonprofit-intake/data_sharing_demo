@@ -91,8 +91,8 @@ function App() {
             <Card
               bg="success"
               key={i}
-              // text={variant.toLowerCase() === 'light' ? 'dark' : 'white'}
-              // style={{ width: '18rem' }}
+              text="white"
+              style={{ width: '18rem' }}
             >
               <Card.Header>Full Match</Card.Header>
               <Card.Body>
