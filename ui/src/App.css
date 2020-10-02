@@ -1,6 +1,6 @@
 .container {
-  width: 100%;
-  background: gold;
+  /* width: 100%; */
+  /* background: gold; */
   /* height: 100vh;
   display: flex;
   flex-direction: column;
@@ -8,20 +8,17 @@
 }
 
 .header {
-  border: 1px solid blue;
-  align-items: center;
+  border-bottom: 1px solid lightgray;
+  align-content: flex-end;
+  margin-bottom: 1.5em;
+}
+
+.header .brand {
+  margin-right: 0.5em;
 }
 
 .header h2 {
-  border: 1px solid blue;
-  
-}
-
-.inputMenu {
-  /* width: 30em; */
-  /* border: 1px solid grey; */
-  /* display: flex; */
-  /* flex-direction: column; */
+  width: 5.5em;
 }
 
 .resultsContainer {

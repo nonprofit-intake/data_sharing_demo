@@ -48,12 +48,17 @@ function App() {
     <Container className="container">
       <Navbar className="header">
         <Navbar.Brand href="https://www.familypromiseofspokane.org/">
-          <img alt="" src={require("./fp_logo.png")} width="300" />
+          <img
+            alt=""
+            className="brand"
+            src={require("./fp_logo.png")}
+            width="300"
+          />
         </Navbar.Brand>
         <h2>Data Sharing API</h2>
       </Navbar>
-      <Form className="inputMenu" onSubmit={fetchMatches}>
-      <Form.Group>
+      <Form onSubmit={fetchMatches}>
+        <Form.Group>
           <Form.Label>Last Name(s)</Form.Label>
           <Form.Control
             type="text"
