@@ -17,8 +17,9 @@
   margin-right: 0.5em;
 }
 
-.header h2 {
+h2 {
   /* width: 5.5em; */
+  font-family: 'Comfortaa', cursive;
 }
 
 .matchForm {

@@ -212,7 +212,7 @@ function App() {
         <div className="cardContainer">
           {matches.partial_matches.map((match, i) => (
             <Card key={i} className="resultsCard" text="white" style={{ background: "#006FBA" }}>
-              <Card.Header style={{ fontWeight: "bold" }}>
+              <Card.Header style={{ fontSize: "1.1rem", fontWeight: "bold" }}>
                 {capitalizeFirstLetter(match.first_name)}{" "}
                 {capitalizeFirstLetter(match.last_name)}
               </Card.Header>
