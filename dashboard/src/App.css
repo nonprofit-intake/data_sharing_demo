@@ -28,3 +28,15 @@
 .resultsContainer {
   /* border: 1px solid grey; */
 }
+
+.cardContainer{
+  /* border: 1px solid blue; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card {
+  width: 47%;
+  margin-bottom: 1em;
+}
