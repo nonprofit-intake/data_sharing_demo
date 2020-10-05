@@ -23,7 +23,7 @@ h2 {
 }
 
 .matchForm {
-  margin-bottom: 1.5em;
+  margin-bottom: 2em;
 }
 
 .resultsContainer {
@@ -41,13 +41,11 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-bottom: 1em;
+  
 }
 
 .resultsCard {
-  width: 48%;
-  margin-bottom: 1em;
-}
-
-.cardBgCustom {
-  background-color: blue;
+  width: 49%;
+  margin-bottom: 0.8em;
 }
