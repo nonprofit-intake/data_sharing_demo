@@ -141,21 +141,34 @@ function App() {
         ) : (
           <div className="cardContainer">
             {matches.complete_matches.map((match, i) => (
-              <Card
-                bg="success"
-                key={i}
-                text="white"
-                className="card"
-              >
+              <Card bg="success" key={i} text="white" className="card">
                 <Card.Header>Full Match</Card.Header>
                 <Card.Body>
-                  <Card.Text>First: {capitalizeFirstLetter(match.first_name)}</Card.Text>
-                  <Card.Text>Last: {capitalizeFirstLetter(match.last_name)}</Card.Text>
-                  <Card.Text>Enrolled: {match.enroll_date}</Card.Text>
-                  <Card.Text>Exited: {match.exit_date}</Card.Text>
-                  <Card.Text>Income at Entry: ${match.income_at_entry}</Card.Text>
-                  <Card.Text>Income at Exit: ${match.income_at_exit}</Card.Text>
-                  <Card.Text>Exit Destination: {match.exit_destination}</Card.Text>
+                  <Card.Text>
+                    Name: {capitalizeFirstLetter(match.first_name)}{" "}
+                    {capitalizeFirstLetter(match.last_name)}
+                  </Card.Text>
+                  {match.enroll_date && (
+                    <Card.Text>Enrolled: {match.enroll_date}</Card.Text>
+                  )}
+                  {match.exit_date && (
+                    <Card.Text>Exited: {match.exit_date}</Card.Text>
+                  )}
+                  {match.income_at_entry && (
+                    <Card.Text>
+                      Income at Entry: ${match.income_at_entry}
+                    </Card.Text>
+                  )}
+                  {match.income_at_exit && (
+                    <Card.Text>
+                      Income at Exit: ${match.income_at_exit}
+                    </Card.Text>
+                  )}
+                  {match.exit_destination && (
+                    <Card.Text>
+                      Exit Destination: {match.exit_destination}
+                    </Card.Text>
+                  )}
                 </Card.Body>
               </Card>
             ))}
