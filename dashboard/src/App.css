@@ -30,6 +30,11 @@
   height: 5em;
 }
 
+.noMatchCard {
+  width: 1em;
+  background: blue;
+}
+
 .cardContainer{
   /* border: 1px solid blue; */
   height: 3em;
@@ -41,4 +46,8 @@
 .card {
   width: 48%;
   margin-bottom: 1em;
+}
+
+.cardBgCustom {
+  background-color: blue;
 }

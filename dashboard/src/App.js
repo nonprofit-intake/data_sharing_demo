@@ -59,11 +59,11 @@ function capitalizeFirstLetter(string) {
 function App() {
   const [lastName, setLastName] = useState("");
   const [ssn, setSSN] = useState("");
-  const [matches, setMatches] = useState({
-    complete_matches: [],
-    partial_matches: [],
-  });
-  // const [matches, setMatches] = useState(temp_response);
+  // const [matches, setMatches] = useState({
+  //   complete_matches: [],
+  //   partial_matches: [],
+  // });
+  const [matches, setMatches] = useState(temp_response);
   const [isLoading, setIsLoading] = useState(false);
   const [postFetch, setPostFetch] = useState(false);
 
@@ -152,21 +152,21 @@ function App() {
         )}
       </Form>
       <div className="resultsContainer">
-        {/* <h2>Results:</h2> */}
-        {!matches.complete_matches.length &&
-          !matches.partial_matches.length &&
-          postFetch && <div>No results found</div>}
+        {!matches.complete_matches.length && !matches.partial_matches.length && (
+          <Card className="noMatchCard">
+            <Card.Body>No guests found with given last name or SSN.</Card.Body>
+          </Card>
+        )}
         {(Boolean(matches.complete_matches.length) ||
           Boolean(matches.partial_matches.length)) && <h2>Results:</h2>}
         <div className="cardContainer">
           {matches.complete_matches.map((match, i) => (
-            <Card bg="success" key={i} text="white" className="card">
-              <Card.Header>Full Match</Card.Header>
+            <Card key={i} text="white" style={{ background: "#8D4982" }}>
+              <Card.Header>
+                Full Match: {capitalizeFirstLetter(match.first_name)}{" "}
+                {capitalizeFirstLetter(match.last_name)}
+              </Card.Header>
               <Card.Body>
-                <Card.Text>
-                  Name: {capitalizeFirstLetter(match.first_name)}{" "}
-                  {capitalizeFirstLetter(match.last_name)}
-                </Card.Text>
                 {match.enroll_date && (
                   <Card.Text>Enrolled: {match.enroll_date}</Card.Text>
                 )}
