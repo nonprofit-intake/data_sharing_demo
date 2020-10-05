@@ -27,10 +27,12 @@
 
 .resultsContainer {
   /* border: 1px solid grey; */
+  height: 5em;
 }
 
 .cardContainer{
   /* border: 1px solid blue; */
+  height: 3em;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

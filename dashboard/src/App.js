@@ -6,6 +6,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import Spinner from "react-bootstrap/Spinner";
 
 const temp_response = {
   complete_matches: [
@@ -58,9 +59,13 @@ function capitalizeFirstLetter(string) {
 function App() {
   const [lastName, setLastName] = useState("");
   const [ssn, setSSN] = useState("");
-  // const [matches, setMatches] = useState({"complete_matches": [], "partial_matches": []});
-  const [matches, setMatches] = useState(temp_response);
+  const [matches, setMatches] = useState({
+    complete_matches: [],
+    partial_matches: [],
+  });
+  // const [matches, setMatches] = useState(temp_response);
   const [isLoading, setIsLoading] = useState(false);
+  const [postFetch, setPostFetch] = useState(false);
 
   const fetchMatches = (e) => {
     setIsLoading(true);
@@ -81,13 +86,12 @@ function App() {
       }
     )
       .then((response) => {
-        console.log(response);
         return response.json();
       })
       .then((response) => {
-        console.log(response);
         setIsLoading(false);
         setMatches(response);
+        setPostFetch(true);
       })
       .catch((err) => {
         console.log("error", err);
@@ -132,48 +136,90 @@ function App() {
             seconds.
           </Form.Text>
         </Form.Group>
-        <Button type="submit">Find Matches</Button>
+        {isLoading ? (
+          <Button variant="primary" disabled>
+            <Spinner
+              as="span"
+              animation="grow"
+              size="sm"
+              role="status"
+              aria-hidden="true"
+            />
+            Loading...
+          </Button>
+        ) : (
+          <Button type="submit">Find Matches</Button>
+        )}
       </Form>
       <div className="resultsContainer">
-        <h2>Results:</h2>
-        {isLoading ? (
-          <p>loading....</p>
-        ) : (
-          <div className="cardContainer">
-            {matches.complete_matches.map((match, i) => (
-              <Card bg="success" key={i} text="white" className="card">
-                <Card.Header>Full Match</Card.Header>
-                <Card.Body>
+        {/* <h2>Results:</h2> */}
+        {!matches.complete_matches.length &&
+          !matches.partial_matches.length &&
+          postFetch && <div>No results found</div>}
+        {(Boolean(matches.complete_matches.length) ||
+          Boolean(matches.partial_matches.length)) && <h2>Results:</h2>}
+        <div className="cardContainer">
+          {matches.complete_matches.map((match, i) => (
+            <Card bg="success" key={i} text="white" className="card">
+              <Card.Header>Full Match</Card.Header>
+              <Card.Body>
+                <Card.Text>
+                  Name: {capitalizeFirstLetter(match.first_name)}{" "}
+                  {capitalizeFirstLetter(match.last_name)}
+                </Card.Text>
+                {match.enroll_date && (
+                  <Card.Text>Enrolled: {match.enroll_date}</Card.Text>
+                )}
+                {match.exit_date && (
+                  <Card.Text>Exited: {match.exit_date}</Card.Text>
+                )}
+                {match.income_at_entry && (
                   <Card.Text>
-                    Name: {capitalizeFirstLetter(match.first_name)}{" "}
-                    {capitalizeFirstLetter(match.last_name)}
+                    Income at Entry: ${match.income_at_entry}
                   </Card.Text>
-                  {match.enroll_date && (
-                    <Card.Text>Enrolled: {match.enroll_date}</Card.Text>
-                  )}
-                  {match.exit_date && (
-                    <Card.Text>Exited: {match.exit_date}</Card.Text>
-                  )}
-                  {match.income_at_entry && (
-                    <Card.Text>
-                      Income at Entry: ${match.income_at_entry}
-                    </Card.Text>
-                  )}
-                  {match.income_at_exit && (
-                    <Card.Text>
-                      Income at Exit: ${match.income_at_exit}
-                    </Card.Text>
-                  )}
-                  {match.exit_destination && (
-                    <Card.Text>
-                      Exit Destination: {match.exit_destination}
-                    </Card.Text>
-                  )}
-                </Card.Body>
-              </Card>
-            ))}
-          </div>
-        )}
+                )}
+                {match.income_at_exit && (
+                  <Card.Text>Income at Exit: ${match.income_at_exit}</Card.Text>
+                )}
+                {match.exit_destination && (
+                  <Card.Text>
+                    Exit Destination: {match.exit_destination}
+                  </Card.Text>
+                )}
+              </Card.Body>
+            </Card>
+          ))}
+          {matches.complete_matches.map((match, i) => (
+            <Card bg="success" key={i} text="white" className="card">
+              <Card.Header>Full Match</Card.Header>
+              <Card.Body>
+                <Card.Text>
+                  Name: {capitalizeFirstLetter(match.first_name)}{" "}
+                  {capitalizeFirstLetter(match.last_name)}
+                </Card.Text>
+                {match.enroll_date && (
+                  <Card.Text>Enrolled: {match.enroll_date}</Card.Text>
+                )}
+                {match.exit_date && (
+                  <Card.Text>Exited: {match.exit_date}</Card.Text>
+                )}
+                {match.income_at_entry && (
+                  <Card.Text>
+                    Income at Entry: ${match.income_at_entry}
+                  </Card.Text>
+                )}
+                {match.income_at_exit && (
+                  <Card.Text>Income at Exit: ${match.income_at_exit}</Card.Text>
+                )}
+                {match.exit_destination && (
+                  <Card.Text>
+                    Exit Destination: {match.exit_destination}
+                  </Card.Text>
+                )}
+              </Card.Body>
+            </Card>
+          ))}
+        </div>
       </div>
     </Container>
   );
