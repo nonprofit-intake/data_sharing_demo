@@ -7,10 +7,43 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
+const temp_response = {
+  'complete_matches': [{'enroll_date': '11-18-2018',
+   'exit_date': '01-13-2019',
+   'exit_destination': 'Rental by client, other ongoing housing subsidy',
+   'first_name': 'britney',
+   'income_at_entry': null,
+   'income_at_exit': 569.0,
+   'last_name': 'estabrooks'},
+  {'enroll_date': '06-14-2018',
+   'exit_date': '07-28-2018',
+   'exit_destination': 'Emergency shelter, including hotel or motel paid for with emergency shelter voucher, or RHY-funded Host Home shelter',
+   'first_name': 'britney',
+   'income_at_entry': null,
+   'income_at_exit': 459.0,
+   'last_name': 'estabrooks'},
+  {'enroll_date': '10-25-2018',
+   'exit_date': '11-18-2018',
+   'exit_destination': 'Emergency shelter, including hotel or motel paid for with emergency shelter voucher, or RHY-funded Host Home shelter',
+   'first_name': 'britney',
+   'income_at_entry': 569.0,
+   'income_at_exit': 569.0,
+   'last_name': 'estabrooks'},
+  {'enroll_date': '12-01-2018',
+   'exit_date': null,
+   'exit_destination': null,
+   'first_name': 'britney',
+   'income_at_entry': null,
+   'income_at_exit': null,
+   'last_name': 'estabrooks'}],
+ 'partial_matches': [{'first_name': 'liliya', 'last_name': 'kryshtal'}]
+}
+
 function App() {
   const [lastName, setLastName] = useState("");
   const [ssn, setSSN] = useState("");
-  const [matches, setMatches] = useState({"matches": [], "partial_matches": []});
+  // const [matches, setMatches] = useState({"complete_matches": [], "partial_matches": []});
+  const [matches, setMatches] = useState(temp_response);
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchMatches = (e) => {
@@ -78,7 +111,7 @@ function App() {
             value={ssn}
             onChange={(event) => setSSN(event.target.value)}
           />
-          <Form.Text>*Last name order must match SSN order.</Form.Text>
+          <Form.Text>*Last name order must match SSN order. Loading will take 10+ seconds.</Form.Text>
         </Form.Group>
         <Button type="submit">Find Matches</Button>
       </Form>
@@ -87,7 +120,7 @@ function App() {
         {isLoading ? (
           <p>loading....</p>
         ) : (
-          matches.matches.map((match, i) => (
+          matches.complete_matches.map((match, i) => (
             <Card
               bg="success"
               key={i}
