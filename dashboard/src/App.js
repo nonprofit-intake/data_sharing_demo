@@ -49,7 +49,26 @@ const temp_response = {
       last_name: "estabrooks",
     },
   ],
-  partial_matches: [{ first_name: "liliya", last_name: "kryshtal" }],
+  partial_matches: [
+    {
+      enroll_date: "11-18-2018",
+      exit_date: "01-13-2019",
+      exit_destination: "Rental by client, other ongoing housing subsidy",
+      first_name: "britney",
+      income_at_entry: null,
+      income_at_exit: 569.0,
+      last_name: "estabrooks",
+    },
+    {
+      enroll_date: "11-18-2018",
+      exit_date: "01-13-2019",
+      exit_destination: "Rental by client, other ongoing housing subsidy",
+      first_name: "britney",
+      income_at_entry: null,
+      income_at_exit: 569.0,
+      last_name: "estabrooks",
+    }
+  ],
 };
 
 function capitalizeFirstLetter(string) {
@@ -59,11 +78,11 @@ function capitalizeFirstLetter(string) {
 function App() {
   const [lastName, setLastName] = useState("");
   const [ssn, setSSN] = useState("");
-  // const [matches, setMatches] = useState({
-  //   complete_matches: [],
-  //   partial_matches: [],
-  // });
-  const [matches, setMatches] = useState(temp_response);
+  const [matches, setMatches] = useState({
+    complete_matches: [],
+    partial_matches: [],
+  });
+  // const [matches, setMatches] = useState(temp_response);
   const [isLoading, setIsLoading] = useState(false);
   const [postFetch, setPostFetch] = useState(false);
 
@@ -137,7 +156,7 @@ function App() {
           </Form.Text>
         </Form.Group>
         {isLoading ? (
-          <Button variant="primary" disabled>
+          <Button style={{ background: "#006FBA" }} disabled>
             <Spinner
               as="span"
               animation="grow"
@@ -148,22 +167,21 @@ function App() {
             Loading...
           </Button>
         ) : (
-          <Button type="submit">Find Matches</Button>
+          <Button type="submit" style={{ background: "#006FBA" }}>Find Matches</Button>
         )}
       </Form>
       <div className="resultsContainer">
-        {!matches.complete_matches.length && !matches.partial_matches.length && (
-          <Card className="noMatchCard">
+        {!matches.complete_matches.length && !matches.partial_matches.length && postFetch && (
+          <Card className="noMatchCard" style={{ background: "#FEC357" }}>
             <Card.Body>No guests found with given last name or SSN.</Card.Body>
           </Card>
         )}
-        {(Boolean(matches.complete_matches.length) ||
-          Boolean(matches.partial_matches.length)) && <h2>Results:</h2>}
+        {Boolean(matches.complete_matches.length) && <h2>Full Matches:</h2>}
         <div className="cardContainer">
           {matches.complete_matches.map((match, i) => (
-            <Card key={i} text="white" style={{ background: "#8D4982" }}>
+            <Card key={i} className="resultsCard" text="white" style={{ background: "#8D4982" }}>
               <Card.Header>
-                Full Match: {capitalizeFirstLetter(match.first_name)}{" "}
+                {capitalizeFirstLetter(match.first_name)}{" "}
                 {capitalizeFirstLetter(match.last_name)}
               </Card.Header>
               <Card.Body>
@@ -189,14 +207,16 @@ function App() {
               </Card.Body>
             </Card>
           ))}
-          {matches.complete_matches.map((match, i) => (
-            <Card bg="success" key={i} text="white" className="card">
-              <Card.Header>Full Match</Card.Header>
+        </div>
+        {Boolean(matches.partial_matches.length) && <h2>Partial Matches:</h2>}
+        <div className="cardContainer">
+          {matches.partial_matches.map((match, i) => (
+            <Card key={i} text="white" style={{ background: "#006FBA" }}>
+              <Card.Header>
+                {capitalizeFirstLetter(match.first_name)}{" "}
+                {capitalizeFirstLetter(match.last_name)}
+              </Card.Header>
               <Card.Body>
-                <Card.Text>
-                  Name: {capitalizeFirstLetter(match.first_name)}{" "}
-                  {capitalizeFirstLetter(match.last_name)}
-                </Card.Text>
                 {match.enroll_date && (
                   <Card.Text>Enrolled: {match.enroll_date}</Card.Text>
                 )}
