@@ -78,11 +78,11 @@ function capitalizeFirstLetter(string) {
 function App() {
   const [lastName, setLastName] = useState("");
   const [ssn, setSSN] = useState("");
-  const [matches, setMatches] = useState({
-    complete_matches: [],
-    partial_matches: [],
-  });
-  // const [matches, setMatches] = useState(temp_response);
+  // const [matches, setMatches] = useState({
+  //   complete_matches: [],
+  //   partial_matches: [],
+  // });
+  const [matches, setMatches] = useState(temp_response);
   const [isLoading, setIsLoading] = useState(false);
   const [postFetch, setPostFetch] = useState(false);
 
@@ -180,7 +180,7 @@ function App() {
         <div className="cardContainer">
           {matches.complete_matches.map((match, i) => (
             <Card key={i} className="resultsCard" text="white" style={{ background: "#8D4982" }}>
-              <Card.Header>
+              <Card.Header style={{ fontSize: "1.1rem", fontWeight: "bold" }}>
                 {capitalizeFirstLetter(match.first_name)}{" "}
                 {capitalizeFirstLetter(match.last_name)}
               </Card.Header>
@@ -211,8 +211,8 @@ function App() {
         {Boolean(matches.partial_matches.length) && <h2>Partial Matches:</h2>}
         <div className="cardContainer">
           {matches.partial_matches.map((match, i) => (
-            <Card key={i} text="white" style={{ background: "#006FBA" }}>
-              <Card.Header>
+            <Card key={i} className="resultsCard" text="white" style={{ background: "#006FBA" }}>
+              <Card.Header style={{ fontWeight: "bold" }}>
                 {capitalizeFirstLetter(match.first_name)}{" "}
                 {capitalizeFirstLetter(match.last_name)}
               </Card.Header>
