@@ -67,7 +67,7 @@ const temp_response = {
       income_at_entry: null,
       income_at_exit: 569.0,
       last_name: "estabrooks",
-    }
+    },
   ],
 };
 
@@ -119,7 +119,7 @@ function App() {
 
   return (
     <Container className="container">
-      <Navbar className="header">
+      <Navbar className="header" style={{ alignItems: "flex-end", justifyContent: "space-between" }}>
         <Navbar.Brand href="https://www.familypromiseofspokane.org/">
           <img
             alt=""
@@ -132,7 +132,9 @@ function App() {
       </Navbar>
       <Form className="matchForm" onSubmit={fetchMatches}>
         <Form.Group>
-          <Form.Label>Last Name(s)</Form.Label>
+          <Form.Label style={{ fontFamily: "Comfortaa, cursive" }}>
+            Last Name(s)
+          </Form.Label>
           <Form.Control
             type="text"
             name="lastName"
@@ -142,7 +144,9 @@ function App() {
           />
         </Form.Group>
         <Form.Group>
-          <Form.Label>SSN(s)</Form.Label>
+          <Form.Label style={{ fontFamily: "Comfortaa, cursive" }}>
+            SSN(s)
+          </Form.Label>
           <Form.Control
             type="text"
             name="ssn"
@@ -167,19 +171,30 @@ function App() {
             Loading...
           </Button>
         ) : (
-          <Button type="submit" style={{ background: "#006FBA" }}>Find Matches</Button>
+          <Button type="submit" style={{ background: "#006FBA" }}>
+            Find Matches
+          </Button>
         )}
       </Form>
       <div className="resultsContainer">
-        {!matches.complete_matches.length && !matches.partial_matches.length && postFetch && (
-          <Card className="noMatchCard" style={{ background: "#FEC357" }}>
-            <Card.Body>No guests found with given last name or SSN.</Card.Body>
-          </Card>
-        )}
+        {!matches.complete_matches.length &&
+          !matches.partial_matches.length &&
+          postFetch && (
+            <Card className="noMatchCard" style={{ background: "#FEC357" }}>
+              <Card.Body>
+                No guests found with given last name or SSN.
+              </Card.Body>
+            </Card>
+          )}
         {Boolean(matches.complete_matches.length) && <h2>Full Matches:</h2>}
         <div className="cardContainer">
           {matches.complete_matches.map((match, i) => (
-            <Card key={i} className="resultsCard" text="white" style={{ background: "#8D4982" }}>
+            <Card
+              key={i}
+              className="resultsCard"
+              text="white"
+              style={{ background: "#8D4982" }}
+            >
               <Card.Header style={{ fontSize: "1.1rem", fontWeight: "bold" }}>
                 {capitalizeFirstLetter(match.first_name)}{" "}
                 {capitalizeFirstLetter(match.last_name)}
@@ -211,7 +226,12 @@ function App() {
         {Boolean(matches.partial_matches.length) && <h2>Partial Matches:</h2>}
         <div className="cardContainer">
           {matches.partial_matches.map((match, i) => (
-            <Card key={i} className="resultsCard" text="white" style={{ background: "#006FBA" }}>
+            <Card
+              key={i}
+              className="resultsCard"
+              text="white"
+              style={{ background: "#006FBA" }}
+            >
               <Card.Header style={{ fontSize: "1.1rem", fontWeight: "bold" }}>
                 {capitalizeFirstLetter(match.first_name)}{" "}
                 {capitalizeFirstLetter(match.last_name)}

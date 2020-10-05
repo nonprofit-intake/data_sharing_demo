@@ -1,33 +1,21 @@
-.container {
-  /* width: 100%; */
-  /* background: gold; */
-  /* height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center; */
+h2 {
+  font-family: 'Comfortaa', cursive;
 }
 
 .header {
   border-bottom: 1px solid lightgray;
-  align-content: flex-end;
   margin-bottom: 1.5em;
-}
-
-.header .brand {
-  margin-right: 0.5em;
-}
-
-h2 {
-  /* width: 5.5em; */
-  font-family: 'Comfortaa', cursive;
 }
 
 .matchForm {
   margin-bottom: 2em;
 }
 
+.matchForm .btn {
+  font-family: 'Comfortaa', cursive;
+}
+
 .resultsContainer {
-  /* border: 1px solid grey; */
   display: flex;
   flex-direction: column;
 }
@@ -37,11 +25,10 @@ h2 {
 }
 
 .cardContainer{
-  /* border: 1px solid blue; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
   
 }
 
