@@ -51,6 +51,10 @@ const temp_response = {
   partial_matches: [{ first_name: "liliya", last_name: "kryshtal" }],
 };
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function App() {
   const [lastName, setLastName] = useState("");
   const [ssn, setSSN] = useState("");
@@ -145,7 +149,13 @@ function App() {
               >
                 <Card.Header>Full Match</Card.Header>
                 <Card.Body>
-                  <Card.Text>{JSON.stringify(match)}</Card.Text>
+                  <Card.Text>First: {capitalizeFirstLetter(match.first_name)}</Card.Text>
+                  <Card.Text>Last: {capitalizeFirstLetter(match.last_name)}</Card.Text>
+                  <Card.Text>Enrolled: {match.enroll_date}</Card.Text>
+                  <Card.Text>Exited: {match.exit_date}</Card.Text>
+                  <Card.Text>Income at Entry: ${match.income_at_entry}</Card.Text>
+                  <Card.Text>Income at Exit: ${match.income_at_exit}</Card.Text>
+                  <Card.Text>Exit Destination: {match.exit_destination}</Card.Text>
                 </Card.Body>
               </Card>
             ))}
