@@ -85,7 +85,7 @@ function App() {
   // const [matches, setMatches] = useState(temp_response);
   const [isLoading, setIsLoading] = useState(false);
   const [postFetch, setPostFetch] = useState(false);
-  const [fetchError, setFetchError] = useState("");
+  const [httpError, setHttpError] = useState("");
 
   const fetchMatches = (e) => {
     setIsLoading(true);
@@ -114,7 +114,7 @@ function App() {
         setPostFetch(true);
       })
       .catch((err) => {
-        setFetchError(JSON.stringify(err));
+        setHttpError(JSON.stringify(err));
       });
   };
 
@@ -180,14 +180,14 @@ function App() {
       <div className="resultsContainer">
         {!matches.complete_matches.length &&
           !matches.partial_matches.length &&
-          postFetch && fetchError && (
+          postFetch && httpError && (
             <Card className="noMatchCard" style={{ background: "#FEC357" }}>
               <Card.Body>
                 No guests found with given last name or SSN.
               </Card.Body>
             </Card>
           )}
-        {Boolean(fetchError) && <div>Error: {JSON.stringify(fetchError)}</div>}
+        {Boolean(httpError) && <div>Error: {httpError}</div>}
         {Boolean(matches.complete_matches.length) && <h2>Full Matches:</h2>}
         <div className="cardContainer">
           {matches.complete_matches.map((match, i) => (
