@@ -85,7 +85,7 @@ function App() {
   // const [matches, setMatches] = useState(temp_response);
   const [isLoading, setIsLoading] = useState(false);
   const [postFetch, setPostFetch] = useState(false);
-  const [httpError, setHttpError] = useState("");
+  const [httpError, setHttpError] = useState(null);
 
   const fetchMatches = (e) => {
     setIsLoading(true);
@@ -95,8 +95,6 @@ function App() {
       last_name: lastName.split(",").map((s) => s.trim()),
       ssn: ssn.split(",").map((s) => s.trim()),
     };
-
-    console.log(JSON.stringify(data));
 
     fetch(
       "https://3yk0fzdvdh.execute-api.us-east-1.amazonaws.com/default/return_user_info",
@@ -114,6 +112,8 @@ function App() {
         setPostFetch(true);
       })
       .catch((err) => {
+        console.log(err)
+        setIsLoading(false);
         setHttpError(JSON.stringify(err));
       });
   };
