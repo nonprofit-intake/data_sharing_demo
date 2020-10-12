@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from "axios";
+
 import "./App.css";
 
 import Container from "react-bootstrap/Container";
@@ -96,34 +98,35 @@ function App() {
       ssn: ssn.split(",").map((s) => s.trim()),
     };
 
-    fetch(
-      "https://3yk0fzdvdh.execute-api.us-east-1.amazonaws.com/default/return_user_info",
-      {
-        method: "POST",
-        body: JSON.stringify(data),
-      }
-    )
-      // .then(response => response.json())
-      .then(response => {
-        if (response.ok) {
-          console.log(response)
-          // setIsLoading(false);
-          // setMatches(response);
-          // setPostFetch(true);
-        } else {
-          console.log(response)
-          // setIsLoading(false);
-          // setHttpError(JSON.stringify(err));
-        }
+    const url =
+      "https://3yk0fzdvdh.execute-api.us-east-1.amazonaws.com/default/return_user_info";
+
+    axios
+      .post(url, data)
+      .then((response) => {
+        console.log(response);
+        setIsLoading(false);
+        setMatches(response.data);
+        setPostFetch(true);
       })
-      .catch(err => {
-        console.log(err)
+      .catch((error) => {
+        let errorMessage = error.response.data.errorMessage;
+        let defaultMatches = {
+          complete_matches: [],
+          partial_matches: [],
+        };
+        setMatches(defaultMatches);
+        setIsLoading(false);
+        setHttpError(errorMessage);
       });
   };
 
   return (
     <Container className="container">
-      <Navbar className="header" style={{ alignItems: "flex-end", justifyContent: "space-between" }}>
+      <Navbar
+        className="header"
+        style={{ alignItems: "flex-end", justifyContent: "space-between" }}
+      >
         <Navbar.Brand href="https://www.familypromiseofspokane.org/">
           <img
             alt=""
@@ -183,14 +186,15 @@ function App() {
       <div className="resultsContainer">
         {!matches.complete_matches.length &&
           !matches.partial_matches.length &&
-          postFetch && httpError && (
+          postFetch &&
+          httpError && (
             <Card className="noMatchCard" style={{ background: "#FEC357" }}>
               <Card.Body>
                 No guests found with given last name or SSN.
               </Card.Body>
             </Card>
           )}
-        {Boolean(httpError) && <div>Error: {httpError}</div>}
+        {Boolean(httpError) && <div>{httpError}</div>}
         {Boolean(matches.complete_matches.length) && <h2>Full Matches:</h2>}
         <div className="cardContainer">
           {matches.complete_matches.map((match, i) => (
