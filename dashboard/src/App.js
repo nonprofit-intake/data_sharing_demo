@@ -115,7 +115,7 @@ function App() {
           complete_matches: [],
           partial_matches: [],
         };
-        
+
         setMatches(defaultMatches);
         setIsLoading(false);
         setHttpError(errorMessage);
@@ -195,7 +195,11 @@ function App() {
               </Card.Body>
             </Card>
           )}
-        {Boolean(httpError) && <div>{httpError}</div>}
+        {httpError && (
+          <Card className="errorCard" style={{ background: "#FEC357" }}>
+            <Card.Body>{httpError}</Card.Body>
+          </Card>
+        )}
         {Boolean(matches.complete_matches.length) && <h2>Full Matches:</h2>}
         <div className="cardContainer">
           {matches.complete_matches.map((match, i) => (
