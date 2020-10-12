@@ -103,18 +103,21 @@ function App() {
         body: JSON.stringify(data),
       }
     )
-      .then((response) => {
-        return response.json();
+      // .then(response => response.json())
+      .then(response => {
+        if (response.ok) {
+          console.log(response)
+          // setIsLoading(false);
+          // setMatches(response);
+          // setPostFetch(true);
+        } else {
+          console.log(response)
+          // setIsLoading(false);
+          // setHttpError(JSON.stringify(err));
+        }
       })
-      .then((response) => {
-        setIsLoading(false);
-        setMatches(response);
-        setPostFetch(true);
-      })
-      .catch((err) => {
+      .catch(err => {
         console.log(err)
-        setIsLoading(false);
-        setHttpError(JSON.stringify(err));
       });
   };
 
