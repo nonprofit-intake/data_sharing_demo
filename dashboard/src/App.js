@@ -110,11 +110,12 @@ function App() {
         setPostFetch(true);
       })
       .catch((error) => {
-        let errorMessage = error.response.data.errorMessage;
+        let errorMessage = error.response.data.errorMessage.split(":").slice(-1)[0];
         let defaultMatches = {
           complete_matches: [],
           partial_matches: [],
         };
+        console.log(errorMessage)
 
         setMatches(defaultMatches);
         setIsLoading(false);
@@ -197,7 +198,7 @@ function App() {
           )}
         {httpError && (
           <Card className="errorCard" style={{ background: "#FEC357" }}>
-            <Card.Body>{httpError}</Card.Body>
+            <Card.Body>Error: {httpError}</Card.Body>
           </Card>
         )}
         {Boolean(matches.complete_matches.length) && <h2>Full Matches:</h2>}
