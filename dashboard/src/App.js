@@ -104,7 +104,7 @@ function App() {
     axios
       .post(url, data)
       .then((response) => {
-        console.log(response);
+        setHttpError(null);
         setIsLoading(false);
         setMatches(response.data);
         setPostFetch(true);
@@ -115,6 +115,7 @@ function App() {
           complete_matches: [],
           partial_matches: [],
         };
+        
         setMatches(defaultMatches);
         setIsLoading(false);
         setHttpError(errorMessage);
@@ -187,7 +188,7 @@ function App() {
         {!matches.complete_matches.length &&
           !matches.partial_matches.length &&
           postFetch &&
-          httpError && (
+          !httpError && (
             <Card className="noMatchCard" style={{ background: "#FEC357" }}>
               <Card.Body>
                 No guests found with given last name or SSN.
