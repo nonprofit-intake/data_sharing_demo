@@ -127,7 +127,7 @@ function App() {
     <Container className="container">
       <Navbar
         className="header"
-        style={{ alignItems: "flex-end", justifyContent: "space-between" }}
+        style={{ alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap" }}
       >
         <Navbar.Brand href="https://www.familypromiseofspokane.org/">
           <img
