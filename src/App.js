@@ -137,7 +137,7 @@ function App() {
             width="300"
           />
         </Navbar.Brand>
-        <h2>Data Sharing API</h2>
+        <h2><a href="https://github.com/nonprofit-intake/family_promise_data_sharing">Data Sharing API</a></h2>
       </Navbar>
       <Form className="matchForm" onSubmit={fetchMatches}>
         <Form.Group>
