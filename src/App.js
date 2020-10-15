@@ -97,6 +97,7 @@ function App() {
     const data = {
       last_name: lastName.split(",").map((s) => s.trim()),
       ssn: ssn.split(",").map((s) => s.trim()),
+      pwd: password
     };
 
     const url =
