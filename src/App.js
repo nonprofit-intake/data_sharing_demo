@@ -115,8 +115,6 @@ function App() {
           complete_matches: [],
           partial_matches: [],
         };
-        console.log(errorMessage)
-
         setMatches(defaultMatches);
         setIsLoading(false);
         setHttpError(errorMessage);
