@@ -168,6 +168,18 @@ function App() {
             seconds.
           </Form.Text>
         </Form.Group>
+        <Form.Group>
+          <Form.Label style={{ fontFamily: "Comfortaa, cursive" }}>
+            Password
+          </Form.Label>
+          <Form.Control
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={ssn}
+            onChange={(event) => setSSN(event.target.value)}
+          />
+        </Form.Group>
         {isLoading ? (
           <Button style={{ background: "#006FBA" }} disabled>
             <Spinner
