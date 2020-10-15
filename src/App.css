@@ -7,6 +7,14 @@ h2 {
   margin-bottom: 1.5em;
 }
 
+.sourceCodeLink {
+  color: black;
+}
+
+.sourceCodeLink:hover {
+  text-decoration: none;
+}
+
 .matchForm {
   margin-bottom: 2em;
 }
