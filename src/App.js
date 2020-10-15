@@ -80,6 +80,7 @@ function capitalizeFirstLetter(string) {
 function App() {
   const [lastName, setLastName] = useState("");
   const [ssn, setSSN] = useState("");
+  const [password, setPassword] = useState("");
   const [matches, setMatches] = useState({
     complete_matches: [],
     partial_matches: [],
@@ -174,8 +175,8 @@ function App() {
             type="password"
             name="password"
             placeholder="Password"
-            value={ssn}
-            onChange={(event) => setSSN(event.target.value)}
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
           />
         </Form.Group>
         {isLoading ? (
