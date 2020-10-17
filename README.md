@@ -63,8 +63,8 @@ Returns the last name, first name, enroll date, exit date, income at entry, inco
     string
     ],
     "ssn": [
-    number, 
-    number
+    string, 
+    string
     ],
     "pwd": string
 }
@@ -79,8 +79,8 @@ Returns the last name, first name, enroll date, exit date, income at entry, inco
             "exit_date": string,
             "exit_destination": string,
             "first_name": string,
-            "income_at_entry": number,
-            "income_at_exit": number,
+            "income_at_entry": float,
+            "income_at_exit": float,
             "last_name": string
         }
     ],
