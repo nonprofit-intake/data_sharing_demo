@@ -18,12 +18,27 @@ Backend: AWS API Gateway, AWS Lambda, ElephantSQL
     - PostgreSQL
 
 ### Deployment to AWS
-#### Docker image
-text here
+#### Developer environment
+Build Amazon Linux image with Python 3.7 and pip
+
+```docker build -t example_image_name .```
+
 #### Installing dependencies
-text here
+
+All dependencies are already installed, but if for some reason you needed to delete and reinstall:
+
+```docker run -v $(pwd):/aws -ti example_image_name```
+
+then
+
+```pip install bcrypt aws-psycopg2 pandas -t /aws```
+
+Do not install if these packages already exist in the aws folder.
+
 #### Packaging Lambda Function
-text here
+```zip -r example_filename.zip *```
+
+At this point you'll want to head over the AWS GUI for function creation at AWS Lambda. 
 
 ## Development
 ### Architecture
