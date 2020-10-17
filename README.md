@@ -1,10 +1,14 @@
 # Family Promise of Spokane Data Sharing API
 ## Project Overview
-Problem: What happened to local utilities customers that fell behind on payments prior to ceasing to be customers? Many become homeless. How do we use our resources to prevent future homelessness?
-Solution: An API that uses unique identifiers to determine whether an ex-customer began receiving services from service providers assisting people experiencing homelessness.
+What happens to local utilities customers that fell behind on payments prior to ceasing to be customers? How can we use our resources to prevent future homelessness?
+
+Our Solution: Design an API that uses unique identifiers to determine whether an ex-customer began receiving services from service providers assisting people experiencing homelessness.
+
 ## Tech Stack
 Services: AWS, Docker, Jupyter Notebooks, Postman
+
 Languages: Python, SQL
+
 Backend: AWS API Gateway, AWS Lambda, ElephantSQL
 
 ## Getting Started
@@ -66,7 +70,7 @@ Returns the last name, first name, enroll date, exit date, income at entry, inco
 ```
 
 #### AWS Environment Variables
-```HOST = database URL
-USER = username
-PASSWORD = password
-AUTH_PWD = secret key```
+- HOST = database URL
+- USER = username
+- PASSWORD = password
+- AUTH_PWD = secret key
