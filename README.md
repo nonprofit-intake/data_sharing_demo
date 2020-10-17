@@ -33,9 +33,11 @@ Backend deployed serverlessly through AWS API Gateway and AWS Lambda.
 ### Endpoint - Return User Info
 
 **URL**
+
 https://3yk0fzdvdh.execute-api.us-east-1.amazonaws.com/default/return_user_info
 
 **Description**
+
 Returns the last name, first name, enroll date, exit date, income at entry, income at exit, and exit destination of a user in database.
 
 **POST Request**
