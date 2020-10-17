@@ -175,7 +175,7 @@ function App() {
           <Form.Control
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="Enter password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
