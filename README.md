@@ -55,8 +55,9 @@ https://3yk0fzdvdh.execute-api.us-east-1.amazonaws.com/default/return_user_info
 
 Returns the last name, first name, enroll date, exit date, income at entry, income at exit, and exit destination of a user in database.
 
-**POST Request**
-```{
+#### POST Request
+```json
+{
     "last_name": [
     string, 
     string
@@ -70,7 +71,8 @@ Returns the last name, first name, enroll date, exit date, income at entry, inco
 ```
 
 **Response**
-```{
+```json
+{
     'complete_matches': [
         {
             'enroll_date': string,
