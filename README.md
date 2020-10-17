@@ -17,7 +17,7 @@ Backend: AWS API Gateway, AWS Lambda, ElephantSQL
 ## Development
 how-to: pipenv, requirements.txt, env variables
 ### Architecture
-![Image of Architecture](https://github.com/nonprofit-intake/family_promise_data_sharing/blob/dev/images/fampromarch.png)
+<img src="https://github.com/nonprofit-intake/family_promise_data_sharing/blob/dev/images/fampromarch.png" width="500" height="350">
 Backend deployed serverlessly through AWS API Gateway and AWS Lambda.
 ### Endpoint - Return User Info
 **URL**
