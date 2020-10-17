@@ -56,43 +56,43 @@ https://3yk0fzdvdh.execute-api.us-east-1.amazonaws.com/default/return_user_info
 Returns the last name, first name, enroll date, exit date, income at entry, income at exit, and exit destination of a user in database.
 
 #### POST Request
-```json
+```typescript
 {
     "last_name": [
     string, 
     string
     ],
     "ssn": [
-    integer, 
-    integer
+    number, 
+    number
     ],
     "pwd": string
 }
 ```
 
 **Response**
-```json
+```typescript
 {
-    'complete_matches': [
+    "complete_matches": [
         {
-            'enroll_date': string,
-            'exit_date': string,
-            'exit_destination': string,
-            'first_name': string,
-            'income_at_entry': float,
-            'income_at_exit': float,
-            'last_name': string
+            "enroll_date": string,
+            "exit_date": string,
+            "exit_destination": string,
+            "first_name": string,
+            "income_at_entry": number,
+            "income_at_exit": number,
+            "last_name": string
         }
     ],
-   'partial_matches': [
+   "partial_matches": [
        {
-           'enroll_date': string,
-           'exit_date': string,
-           'exit_destination': string,
-           'first_name': string,
-           'income_at_entry': float,
-           'income_at_exit': float,
-           'last_name': string
+           "enroll_date": string,
+           "exit_date": string,
+           "exit_destination": string,
+           "first_name": string,
+           "income_at_entry": number,
+           "income_at_exit": number,
+           "last_name": string
         }
     ]
 }
