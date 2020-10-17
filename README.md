@@ -14,17 +14,30 @@ Backend: AWS API Gateway, AWS Lambda, ElephantSQL
     - PostgreSQL
 
 ### Deployment to AWS
+#### Docker image
+text here
+#### Installing dependencies
+text here
+#### Packaging Lambda Function
+text here
+
 ## Development
-how-to: pipenv, requirements.txt, env variables
 ### Architecture
 <img src="https://github.com/nonprofit-intake/family_promise_data_sharing/blob/dev/images/fampromarch.png" width="500" height="350">
 Backend deployed serverlessly through AWS API Gateway and AWS Lambda.
 ### Endpoint - Return User Info
+
 **URL**
 https://3yk0fzdvdh.execute-api.us-east-1.amazonaws.com/default/return_user_info
+
 **Description**
 Returns the last name, first name, enroll date, exit date, income at entry, income at exit, and exit destination of a user in database.
-**Schema**
+
+**Request**
+```text
+```
+
+**Response**
 ```{
     'complete_matches': [
         {
@@ -50,11 +63,7 @@ Returns the last name, first name, enroll date, exit date, income at entry, inco
     ]
 }
 ```
-#### Request
-    GET 
-#### Response
-```json
-```
+
 #### AWS Environment Variables
 ```HOST = database URL
 USER = username
