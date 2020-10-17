@@ -13,9 +13,9 @@ Backend: AWS API Gateway, AWS Lambda, ElephantSQL
 
 ## Getting Started
 ### Prerequisites
-    - SQL
-    - AWS Lambda and AWS API Gateway
-    - PostgreSQL
+- SQL
+- AWS Lambda and AWS API Gateway
+- PostgreSQL
 
 ### Deployment to AWS
 #### Developer environment
