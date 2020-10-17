@@ -80,6 +80,7 @@ function capitalizeFirstLetter(string) {
 function App() {
   const [lastName, setLastName] = useState("");
   const [ssn, setSSN] = useState("");
+  const [password, setPassword] = useState("");
   const [matches, setMatches] = useState({
     complete_matches: [],
     partial_matches: [],
@@ -96,6 +97,7 @@ function App() {
     const data = {
       last_name: lastName.split(",").map((s) => s.trim()),
       ssn: ssn.split(",").map((s) => s.trim()),
+      pwd: password
     };
 
     const url =
@@ -115,8 +117,6 @@ function App() {
           complete_matches: [],
           partial_matches: [],
         };
-        console.log(errorMessage)
-
         setMatches(defaultMatches);
         setIsLoading(false);
         setHttpError(errorMessage);
@@ -137,7 +137,7 @@ function App() {
             width="300"
           />
         </Navbar.Brand>
-        <h2>Data Sharing API</h2>
+        <h2><a className="sourceCodeLink" href="https://github.com/nonprofit-intake/family_promise_data_sharing">Data Sharing API</a></h2>
       </Navbar>
       <Form className="matchForm" onSubmit={fetchMatches}>
         <Form.Group>
@@ -167,6 +167,18 @@ function App() {
             *Last name order must match SSN order. Loading will take 10+
             seconds.
           </Form.Text>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label style={{ fontFamily: "Comfortaa, cursive" }}>
+            Password
+          </Form.Label>
+          <Form.Control
+            type="password"
+            name="password"
+            placeholder="Enter password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
         </Form.Group>
         {isLoading ? (
           <Button style={{ background: "#006FBA" }} disabled>
@@ -201,7 +213,7 @@ function App() {
             <Card.Body>Error: {httpError}</Card.Body>
           </Card>
         )}
-        {Boolean(matches.complete_matches.length) && <h2>Full Matches:</h2>}
+        {Boolean(matches.complete_matches.length) && <h2>SSN {"&"} Last Name Match:</h2>}
         <div className="cardContainer">
           {matches.complete_matches.map((match, i) => (
             <Card
@@ -238,7 +250,7 @@ function App() {
             </Card>
           ))}
         </div>
-        {Boolean(matches.partial_matches.length) && <h2>Partial Matches:</h2>}
+        {Boolean(matches.partial_matches.length) && <h2>Last Name Match Only:</h2>}
         <div className="cardContainer">
           {matches.partial_matches.map((match, i) => (
             <Card
