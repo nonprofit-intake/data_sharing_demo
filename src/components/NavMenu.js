@@ -7,7 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 function NavMenu() {
   return (
     <Navbar
-      className="header"
+      className="navContainer"
       style={{
         alignItems: "flex-end",
         justifyContent: "space-between",
@@ -17,7 +17,6 @@ function NavMenu() {
       <Navbar.Brand href="https://www.familypromiseofspokane.org/">
         <img
           alt=""
-          className="brand"
           src={require("../assets/fp_logo.png")}
           width="300"
         />
