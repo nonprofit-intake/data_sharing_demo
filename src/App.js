@@ -13,7 +13,7 @@ import ResultsCard from "./components/ResultsCard";
 import NavMenu from "./components/NavMenu";
 
 // FOR DEVELOPMENT
-// import tempResponse from "./tempResponse.js";
+import tempResponse from "./tempResponse.js";
 
 const emptyResponse = {
   complete_matches: [],
@@ -24,8 +24,8 @@ function App() {
   const [lastName, setLastName] = useState("");
   const [ssn, setSSN] = useState("");
   const [password, setPassword] = useState("");
-  const [matches, setMatches] = useState(emptyResponse);
-  // const [matches, setMatches] = useState(tempResponse); // DEV
+  // const [matches, setMatches] = useState(emptyResponse);
+  const [matches, setMatches] = useState(tempResponse); // DEV
   const [isLoading, setIsLoading] = useState(false);
   const [postFetch, setPostFetch] = useState(false);
   const [httpError, setHttpError] = useState(null);
