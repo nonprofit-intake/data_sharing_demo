@@ -13,7 +13,7 @@ import Spinner from "react-bootstrap/Spinner";
 import ResultsCard from "./components/ResultsCard";
 
 // For development:
-// import tempResponse from "./tempResponse.js";
+import tempResponse from "./tempResponse.js";
 
 const emptyResponse = {
   complete_matches: [],
@@ -24,8 +24,8 @@ function App() {
   const [lastName, setLastName] = useState("");
   const [ssn, setSSN] = useState("");
   const [password, setPassword] = useState("");
-  const [matches, setMatches] = useState(emptyResponse);
-  // const [matches, setMatches] = useState(tempResponse);
+  // const [matches, setMatches] = useState(emptyResponse);
+  const [matches, setMatches] = useState(tempResponse);
   const [isLoading, setIsLoading] = useState(false);
   const [postFetch, setPostFetch] = useState(false);
   const [httpError, setHttpError] = useState(null);
@@ -184,44 +184,12 @@ function App() {
         )}
         <div className="cardContainer">
           {matches.partial_matches.map((match, i) => (
-            <Card
+            <ResultsCard
               key={i}
-              className="resultsCard"
-              text="white"
-              style={{ background: "#006FBA" }}
-            >
-              <Card.Header style={{ fontSize: "1.1rem", fontWeight: "bold" }}>
-                {capitalizeFirstLetter(match.first_name)}{" "}
-                {capitalizeFirstLetter(match.last_name)}
-              </Card.Header>
-              <Card.Body>
-                {match.enroll_date && (
-                  <Card.Text>
-                    <b>Enrolled</b>: {match.enroll_date}
-                  </Card.Text>
-                )}
-                {match.exit_date && (
-                  <Card.Text>
-                    <b>Exited</b>: {match.exit_date}
-                  </Card.Text>
-                )}
-                {match.income_at_entry && (
-                  <Card.Text>
-                    <b>Income at Entry</b>: ${match.income_at_entry}
-                  </Card.Text>
-                )}
-                {match.income_at_exit && (
-                  <Card.Text>
-                    <b>Income at Exit</b>: ${match.income_at_exit}
-                  </Card.Text>
-                )}
-                {match.exit_destination && (
-                  <Card.Text>
-                    <b>Exit Destination</b>: {match.exit_destination}
-                  </Card.Text>
-                )}
-              </Card.Body>
-            </Card>
+              textColor="white"
+              cardColor="#006FBA"
+              matchData={match}
+            />
           ))}
         </div>
       </div>
