@@ -303,22 +303,22 @@ function App() {
               </Card.Header>
               <Card.Body>
                 {match.enroll_date && (
-                  <Card.Text>Enrolled: {match.enroll_date}</Card.Text>
+                  <Card.Text><b>Enrolled</b>: {match.enroll_date}</Card.Text>
                 )}
                 {match.exit_date && (
-                  <Card.Text>Exited: {match.exit_date}</Card.Text>
+                  <Card.Text><b>Exited</b>: {match.exit_date}</Card.Text>
                 )}
                 {match.income_at_entry && (
                   <Card.Text>
-                    Income at Entry: ${match.income_at_entry}
+                    <b>Income at Entry</b>: ${match.income_at_entry}
                   </Card.Text>
                 )}
                 {match.income_at_exit && (
-                  <Card.Text>Income at Exit: ${match.income_at_exit}</Card.Text>
+                  <Card.Text><b>Income at Exit</b>: ${match.income_at_exit}</Card.Text>
                 )}
                 {match.exit_destination && (
                   <Card.Text>
-                    Exit Destination: {match.exit_destination}
+                    <b>Exit Destination</b>: {match.exit_destination}
                   </Card.Text>
                 )}
               </Card.Body>
@@ -339,23 +339,24 @@ function App() {
                 {capitalizeFirstLetter(match.last_name)}
               </Card.Header>
               <Card.Body>
+                
                 {match.enroll_date && (
-                  <Card.Text>Enrolled: {match.enroll_date}</Card.Text>
+                  <Card.Text><b>Enrolled</b>: {match.enroll_date}</Card.Text>
                 )}
                 {match.exit_date && (
-                  <Card.Text>Exited: {match.exit_date}</Card.Text>
+                  <Card.Text><b>Exited</b>: {match.exit_date}</Card.Text>
                 )}
                 {match.income_at_entry && (
                   <Card.Text>
-                    Income at Entry: ${match.income_at_entry}
+                    <b>Income at Entry</b>: ${match.income_at_entry}
                   </Card.Text>
                 )}
                 {match.income_at_exit && (
-                  <Card.Text>Income at Exit: ${match.income_at_exit}</Card.Text>
+                  <Card.Text><b>Income at Exit</b>: ${match.income_at_exit}</Card.Text>
                 )}
                 {match.exit_destination && (
                   <Card.Text>
-                    Exit Destination: {match.exit_destination}
+                    <b>Exit Destination</b>: {match.exit_destination}
                   </Card.Text>
                 )}
               </Card.Body>
