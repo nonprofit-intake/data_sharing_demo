@@ -11,6 +11,7 @@ import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
 
 import ResultsCard from "./components/ResultsCard";
+import NavMenu from "./components/NavMenu";
 
 // FOR DEVELOPMENT
 // import tempResponse from "./tempResponse.js";
@@ -67,31 +68,7 @@ function App() {
 
   return (
     <Container className="container">
-      <Navbar
-        className="header"
-        style={{
-          alignItems: "flex-end",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-        }}
-      >
-        <Navbar.Brand href="https://www.familypromiseofspokane.org/">
-          <img
-            alt=""
-            className="brand"
-            src={require("./fp_logo.png")}
-            width="300"
-          />
-        </Navbar.Brand>
-        <h2>
-          <a
-            className="sourceCodeLink"
-            href="https://github.com/nonprofit-intake/family_promise_data_sharing"
-          >
-            Data Sharing API
-          </a>
-        </h2>
-      </Navbar>
+      <NavMenu />
       <Form className="matchForm" onSubmit={fetchMatches}>
         <Form.Group>
           <Form.Label style={{ fontFamily: "Comfortaa, cursive" }}>
