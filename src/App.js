@@ -13,10 +13,6 @@ import Spinner from "react-bootstrap/Spinner";
 // For development:
 // import tempResponse from "./tempResponse.js";
 
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 const emptyResponse = {
   complete_matches: [],
   partial_matches: [],

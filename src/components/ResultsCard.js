@@ -1,5 +1,9 @@
 import "./ResultsCard.css";
 
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
 <Card
   key={props.i}
   className="resultsCard"
