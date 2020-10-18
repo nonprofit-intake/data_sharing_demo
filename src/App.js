@@ -16,15 +16,17 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+const emptyResponse = {
+  complete_matches: [],
+  partial_matches: [],
+}
+
 function App() {
   const [lastName, setLastName] = useState("");
   const [ssn, setSSN] = useState("");
   const [password, setPassword] = useState("");
-  // const [matches, setMatches] = useState({
-  //   complete_matches: [],
-  //   partial_matches: [],
-  // });
-  const [matches, setMatches] = useState(tempResponse);
+  const [matches, setMatches] = useState(emptyResponse);
+  // const [matches, setMatches] = useState(tempResponse);
   const [isLoading, setIsLoading] = useState(false);
   const [postFetch, setPostFetch] = useState(false);
   const [httpError, setHttpError] = useState(null);
