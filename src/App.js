@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 
 import "./App.css";
-import tempResponse from "./tempResponse.js";
 
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
@@ -11,6 +10,8 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
 
+// For development:
+// import tempResponse from "./tempResponse.js";
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -19,7 +20,7 @@ function capitalizeFirstLetter(string) {
 const emptyResponse = {
   complete_matches: [],
   partial_matches: [],
-}
+};
 
 function App() {
   const [lastName, setLastName] = useState("");
@@ -38,7 +39,7 @@ function App() {
     const data = {
       last_name: lastName.split(",").map((s) => s.trim()),
       ssn: ssn.split(",").map((s) => s.trim()),
-      pwd: password
+      pwd: password,
     };
 
     const url =
@@ -53,7 +54,9 @@ function App() {
         setPostFetch(true);
       })
       .catch((error) => {
-        let errorMessage = error.response.data.errorMessage.split(":").slice(-1)[0];
+        let errorMessage = error.response.data.errorMessage
+          .split(":")
+          .slice(-1)[0];
         let defaultMatches = {
           complete_matches: [],
           partial_matches: [],
@@ -68,7 +71,11 @@ function App() {
     <Container className="container">
       <Navbar
         className="header"
-        style={{ alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap" }}
+        style={{
+          alignItems: "flex-end",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+        }}
       >
         <Navbar.Brand href="https://www.familypromiseofspokane.org/">
           <img
@@ -78,7 +85,14 @@ function App() {
             width="300"
           />
         </Navbar.Brand>
-        <h2><a className="sourceCodeLink" href="https://github.com/nonprofit-intake/family_promise_data_sharing">Data Sharing API</a></h2>
+        <h2>
+          <a
+            className="sourceCodeLink"
+            href="https://github.com/nonprofit-intake/family_promise_data_sharing"
+          >
+            Data Sharing API
+          </a>
+        </h2>
       </Navbar>
       <Form className="matchForm" onSubmit={fetchMatches}>
         <Form.Group>
@@ -154,13 +168,22 @@ function App() {
             <Card.Body>Error: {httpError}</Card.Body>
           </Card>
         )}
-        {Boolean(matches.complete_matches.length) && <h2>SSN {"&"} Last Name Match:</h2>}
+        {Boolean(matches.complete_matches.length) && (
+          <h2>SSN {"&"} Last Name Match:</h2>
+        )}
         <div className="cardContainer">
           {matches.complete_matches.map((match, i) => (
-            <ResultsCard />
+            <ResultsCard
+              key={i}
+              textColor="white"
+              cardColor="#8D4982"
+              matchData={match}
+            />
           ))}
         </div>
-        {Boolean(matches.partial_matches.length) && <h2>Last Name Match Only:</h2>}
+        {Boolean(matches.partial_matches.length) && (
+          <h2>Last Name Match Only:</h2>
+        )}
         <div className="cardContainer">
           {matches.partial_matches.map((match, i) => (
             <Card
@@ -174,12 +197,15 @@ function App() {
                 {capitalizeFirstLetter(match.last_name)}
               </Card.Header>
               <Card.Body>
-                
                 {match.enroll_date && (
-                  <Card.Text><b>Enrolled</b>: {match.enroll_date}</Card.Text>
+                  <Card.Text>
+                    <b>Enrolled</b>: {match.enroll_date}
+                  </Card.Text>
                 )}
                 {match.exit_date && (
-                  <Card.Text><b>Exited</b>: {match.exit_date}</Card.Text>
+                  <Card.Text>
+                    <b>Exited</b>: {match.exit_date}
+                  </Card.Text>
                 )}
                 {match.income_at_entry && (
                   <Card.Text>
@@ -187,7 +213,9 @@ function App() {
                   </Card.Text>
                 )}
                 {match.income_at_exit && (
-                  <Card.Text><b>Income at Exit</b>: ${match.income_at_exit}</Card.Text>
+                  <Card.Text>
+                    <b>Income at Exit</b>: ${match.income_at_exit}
+                  </Card.Text>
                 )}
                 {match.exit_destination && (
                   <Card.Text>

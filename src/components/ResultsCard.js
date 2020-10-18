@@ -1,37 +1,39 @@
+import "./ResultsCard.css";
+
 <Card
-  key={i}
+  key={props.i}
   className="resultsCard"
-  text="white"
-  style={{ background: "#8D4982" }}
+  text={props.textColor}
+  style={{ background: props.cardColor }}
 >
   <Card.Header style={{ fontSize: "1.1rem", fontWeight: "bold" }}>
-    {capitalizeFirstLetter(match.first_name)}{" "}
-    {capitalizeFirstLetter(match.last_name)}
+    {capitalizeFirstLetter(props.matchData.first_name)}{" "}
+    {capitalizeFirstLetter(props.matchData.last_name)}
   </Card.Header>
   <Card.Body>
-    {match.enroll_date && (
+    {props.matchData.enroll_date && (
       <Card.Text>
-        <b>Enrolled</b>: {match.enroll_date}
+        <b>Enrolled</b>: {props.matchData.enroll_date}
       </Card.Text>
     )}
-    {match.exit_date && (
+    {props.matchData.exit_date && (
       <Card.Text>
-        <b>Exited</b>: {match.exit_date}
+        <b>Exited</b>: {props.matchData.exit_date}
       </Card.Text>
     )}
-    {match.income_at_entry && (
+    {props.matchData.income_at_entry && (
       <Card.Text>
-        <b>Income at Entry</b>: ${match.income_at_entry}
+        <b>Income at Entry</b>: ${props.matchData.income_at_entry}
       </Card.Text>
     )}
-    {match.income_at_exit && (
+    {props.matchData.income_at_exit && (
       <Card.Text>
-        <b>Income at Exit</b>: ${match.income_at_exit}
+        <b>Income at Exit</b>: ${props.matchData.income_at_exit}
       </Card.Text>
     )}
-    {match.exit_destination && (
+    {props.matchData.exit_destination && (
       <Card.Text>
-        <b>Exit Destination</b>: {match.exit_destination}
+        <b>Exit Destination</b>: {props.matchData.exit_destination}
       </Card.Text>
     )}
   </Card.Body>
