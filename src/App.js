@@ -10,6 +10,8 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
 
+import ResultsCard from "./components/ResultsCard";
+
 // For development:
 // import tempResponse from "./tempResponse.js";
 
