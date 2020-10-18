@@ -1,0 +1,10 @@
+.resultsCard {
+    width: 49%;
+    margin-bottom: 0.8em;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .resultsCard {
+      width: 100%;
+    }
+  }
