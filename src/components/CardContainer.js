@@ -7,7 +7,7 @@ import ResultsCard from "./components/ResultsCard";
 function CardContainer(props) {
   return (
     <>
-      <h2>{props.title}</h2>
+      <h2 className="cardContainerTitle">{props.title}</h2>
       <div className="cardContainer">
         {props.matchData.partial_matches.map((match, i) => (
           <ResultsCard
