@@ -8,10 +8,6 @@
   margin-bottom: 0.5em;
 }
 
-.noMatchCard {
-  width: 100%;
-}
-
 .cardContainer{
   display: flex;
   flex-wrap: wrap;
