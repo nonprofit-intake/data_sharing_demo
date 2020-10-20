@@ -4,11 +4,11 @@ import axios from "axios";
 import "./App.css";
 
 import Container from "react-bootstrap/Container";
-import Card from "react-bootstrap/Card";
 
 import ResultsCard from "./components/ResultsCard";
 import NavMenu from "./components/NavMenu";
 import MatchForm from "./components/MatchForm";
+import ErrorCard from "./components/ErrorCard";
 
 // FOR DEVELOPMENT
 // import tempResponse from "./tempResponse.js";
@@ -69,17 +69,12 @@ function App() {
           !matches.partial_matches.length &&
           postFetch &&
           !httpError && (
-            <Card className="noMatchCard" style={{ background: "#FEC357" }}>
-              <Card.Body>
-                No guests found with given last name or SSN.
-              </Card.Body>
-            </Card>
+            <ErrorCard
+              cardColor="#FEC357"
+              data={"No guests found with given last name or SSN"}
+            />
           )}
-        {httpError && (
-          <Card className="errorCard" style={{ background: "#FEC357" }}>
-            <Card.Body>Error: {httpError}</Card.Body>
-          </Card>
-        )}
+        {httpError && <ErrorCard cardColor="#FEC357" data={httpError} />}
         {Boolean(matches.complete_matches.length) && (
           <>
             <h2>SSN {"&"} Last Name Match:</h2>

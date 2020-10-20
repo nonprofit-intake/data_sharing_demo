@@ -7,7 +7,7 @@ import Card from "react-bootstrap/Card";
 function ErrorCard(props) {
   return (
     <Card className="errorCard" style={{ background: props.cardColor }}>
-      <Card.Body>Error: {props.data}</Card.Body>
+      <Card.Body>{props.data}</Card.Body>
     </Card>
   );
 }
