@@ -12,7 +12,10 @@ function MatchForm(props) {
   const [password, setPassword] = useState("");
 
   return (
-    <Form className="matchForm" onSubmit={(e) => props.submitEvent(e, lastName, ssn, password)}>
+    <Form
+      className="matchForm"
+      onSubmit={(e) => props.submitEvent(e, lastName, ssn, password)}
+    >
       <Form.Group>
         <Form.Label style={{ fontFamily: "Comfortaa, cursive" }}>
           Last Name(s)

@@ -81,31 +81,36 @@ function App() {
           </Card>
         )}
         {Boolean(matches.complete_matches.length) && (
-          <h2>SSN {"&"} Last Name Match:</h2>
+          <>
+            <h2>SSN {"&"} Last Name Match:</h2>
+
+            <div className="cardContainer">
+              {matches.complete_matches.map((match, i) => (
+                <ResultsCard
+                  key={i}
+                  textColor="white"
+                  cardColor="#8D4982"
+                  matchData={match}
+                />
+              ))}
+            </div>
+          </>
         )}
-        <div className="cardContainer">
-          {matches.complete_matches.map((match, i) => (
-            <ResultsCard
-              key={i}
-              textColor="white"
-              cardColor="#8D4982"
-              matchData={match}
-            />
-          ))}
-        </div>
         {Boolean(matches.partial_matches.length) && (
-          <h2>Last Name Match Only:</h2>
+          <>
+            <h2>Last Name Match Only:</h2>
+            <div className="cardContainer">
+              {matches.partial_matches.map((match, i) => (
+                <ResultsCard
+                  key={i}
+                  textColor="white"
+                  cardColor="#006FBA"
+                  matchData={match}
+                />
+              ))}
+            </div>
+          </>
         )}
-        <div className="cardContainer">
-          {matches.partial_matches.map((match, i) => (
-            <ResultsCard
-              key={i}
-              textColor="white"
-              cardColor="#006FBA"
-              matchData={match}
-            />
-          ))}
-        </div>
       </div>
     </Container>
   );
