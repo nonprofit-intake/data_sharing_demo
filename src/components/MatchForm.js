@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./MatchForm.css";
 
 import Form from "react-bootstrap/Form";
 
 function MatchForm(props) {
+  const [lastName, setLastName] = useState("");
+  const [ssn, setSSN] = useState("");
+  const [password, setPassword] = useState("");
+  
   return (
     <Form className="matchForm" onSubmit={fetchMatches}>
       <Form.Group>
