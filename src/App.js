@@ -83,7 +83,6 @@ function App() {
         {Boolean(matches.complete_matches.length) && (
           <>
             <h2>SSN {"&"} Last Name Match:</h2>
-
             <div className="cardContainer">
               {matches.complete_matches.map((match, i) => (
                 <ResultsCard
