@@ -5,10 +5,10 @@ import "./App.css";
 
 import Container from "react-bootstrap/Container";
 
-import ResultsCard from "./components/ResultsCard";
 import NavMenu from "./components/NavMenu";
 import MatchForm from "./components/MatchForm";
 import ErrorCard from "./components/ErrorCard";
+import CardContainer from "./components/CardContainer";
 
 // FOR DEVELOPMENT
 // import tempResponse from "./tempResponse.js";
@@ -71,39 +71,25 @@ function App() {
           !httpError && (
             <ErrorCard
               cardColor="#FEC357"
-              data={"No guests found with given last name or SSN"}
+              data={"No guests found with the given last name"}
             />
           )}
         {httpError && <ErrorCard cardColor="#FEC357" data={httpError} />}
-        {Boolean(matches.complete_matches.length) && (
-          <>
-            <h2>SSN {"&"} Last Name Match:</h2>
-            <div className="cardContainer">
-              {matches.complete_matches.map((match, i) => (
-                <ResultsCard
-                  key={i}
-                  textColor="white"
-                  cardColor="#8D4982"
-                  matchData={match}
-                />
-              ))}
-            </div>
-          </>
+        {matches.complete_matches.length != 0 && (
+          <CardContainer
+            title="SSN Last Name Match:"
+            matchData={matches.complete_matches}
+            textColor="white"
+            cardColor="#8D4982"
+          />
         )}
-        {Boolean(matches.partial_matches.length) && (
-          <>
-            <h2>Last Name Match Only:</h2>
-            <div className="cardContainer">
-              {matches.partial_matches.map((match, i) => (
-                <ResultsCard
-                  key={i}
-                  textColor="white"
-                  cardColor="#006FBA"
-                  matchData={match}
-                />
-              ))}
-            </div>
-          </>
+        {matches.partial_matches.length != 0 && (
+          <CardContainer
+            title="Last Name Match Only:"
+            matchData={matches.partial_matches}
+            textColor="white"
+            cardColor="#006FBA"
+          />
         )}
       </div>
     </Container>
