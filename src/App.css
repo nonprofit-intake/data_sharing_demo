@@ -1,11 +1,3 @@
-.matchForm {
-  margin-bottom: 2em;
-}
-
-.matchForm .btn {
-  font-family: 'Comfortaa', cursive;
-}
-
 .resultsContainer {
   display: flex;
   flex-direction: column;
