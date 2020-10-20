@@ -4,10 +4,7 @@ import axios from "axios";
 import "./App.css";
 
 import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Spinner from "react-bootstrap/Spinner";
 
 import ResultsCard from "./components/ResultsCard";
 import NavMenu from "./components/NavMenu";
@@ -27,7 +24,7 @@ function App() {
   const [postFetch, setPostFetch] = useState(false);
   const [httpError, setHttpError] = useState(null);
 
-  const fetchMatches = (e) => {
+  const fetchMatches = (e, lastName, ssn, password) => {
     setIsLoading(true);
     e.preventDefault();
 

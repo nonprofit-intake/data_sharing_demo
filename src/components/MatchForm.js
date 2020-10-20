@@ -3,14 +3,16 @@ import React, { useState } from "react";
 import "./MatchForm.css";
 
 import Form from "react-bootstrap/Form";
+import Spinner from "react-bootstrap/Spinner";
+import Button from "react-bootstrap/Button";
 
 function MatchForm(props) {
   const [lastName, setLastName] = useState("");
   const [ssn, setSSN] = useState("");
   const [password, setPassword] = useState("");
-  
+
   return (
-    <Form className="matchForm" onSubmit={fetchMatches}>
+    <Form className="matchForm" onSubmit={props.fetchMatches(lastName, ssn, password)}>
       <Form.Group>
         <Form.Label style={{ fontFamily: "Comfortaa, cursive" }}>
           Last Name(s)
