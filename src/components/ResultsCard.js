@@ -21,31 +21,36 @@ function ResultsCard(props) {
         {capitalizeFirstLetter(props.matchData.last_name)}
       </Card.Header>
       <Card.Body>
-        {props.matchData.enroll_date && (
-          <Card.Text>
-            <b>Enrolled</b>: {props.matchData.enroll_date}
-          </Card.Text>
-        )}
-        {props.matchData.exit_date && (
-          <Card.Text>
-            <b>Exited</b>: {props.matchData.exit_date}
-          </Card.Text>
-        )}
-        {props.matchData.income_at_entry && (
-          <Card.Text>
-            <b>Income at Entry</b>: ${props.matchData.income_at_entry}
-          </Card.Text>
-        )}
-        {props.matchData.income_at_exit && (
-          <Card.Text>
-            <b>Income at Exit</b>: ${props.matchData.income_at_exit}
-          </Card.Text>
-        )}
-        {props.matchData.exit_destination && (
-          <Card.Text>
-            <b>Exit Destination</b>: {props.matchData.exit_destination}
-          </Card.Text>
-        )}
+        <Card.Text>
+          <b>Enrolled</b>:{" "}
+          {props.matchData.enroll_date
+            ? props.matchData.enroll_date
+            : "Not available"}
+        </Card.Text>
+        <Card.Text>
+          <b>Exited</b>:{" "}
+          {props.matchData.exit_date
+            ? props.matchData.exit_date
+            : "Not available"}
+        </Card.Text>
+        <Card.Text>
+          <b>Income at Entry</b>:{" "}
+          {props.matchData.income_at_entry
+            ? "$" + props.matchData.income_at_entry
+            : "Not available"}
+        </Card.Text>
+        <Card.Text>
+          <b>Income at Exit</b>:{" "}
+          {props.matchData.income_at_exit
+            ? "$" + props.matchData.income_at_exit
+            : "Not available"}
+        </Card.Text>
+        <Card.Text>
+          <b>Exit Destination</b>:{" "}
+          {props.matchData.exit_destination
+            ? props.matchData.exit_destination
+            : "Not available"}
+        </Card.Text>
       </Card.Body>
     </Card>
   );
