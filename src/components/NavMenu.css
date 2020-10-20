@@ -1,0 +1,13 @@
+.navContainer {
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 1.5em;
+}
+
+.sourceCodeLink {
+  color: black;
+  font-family: 'Comfortaa', cursive;
+}
+
+.sourceCodeLink:hover {
+  text-decoration: none;
+}

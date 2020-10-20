@@ -1,0 +1,13 @@
+.cardContainerTitle {
+  font-family: "Comfortaa", cursive;
+  margin-bottom: 0.5em;
+}
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 2em;
+  overflow: auto;
+  max-height: 35em;
+}
