@@ -12,7 +12,7 @@ function MatchForm(props) {
   const [password, setPassword] = useState("");
 
   return (
-    <Form className="matchForm" onSubmit={props.fetchMatches(lastName, ssn, password)}>
+    <Form className="matchForm" onSubmit={(e) => props.submitEvent(e, lastName, ssn, password)}>
       <Form.Group>
         <Form.Label style={{ fontFamily: "Comfortaa, cursive" }}>
           Last Name(s)
@@ -52,7 +52,7 @@ function MatchForm(props) {
           onChange={(event) => setPassword(event.target.value)}
         />
       </Form.Group>
-      {isLoading ? (
+      {props.loading ? (
         <Button style={{ background: "#006FBA" }} disabled>
           <Spinner
             as="span"
