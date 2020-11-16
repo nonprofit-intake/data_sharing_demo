@@ -6,7 +6,7 @@ Our Solution: Design an API that uses unique identifiers to determine whether an
 
 ## Tech Stack
 Frontend: JavaScript, React, CSS, Axios, Bootstrap
-Backend: Python, AWS API Gateway, AWS Lambda, AWS S3, ElephantSQL
+Backend: Python, Docker, AWS API Gateway, AWS Lambda, AWS S3, ElephantSQL
 
 ## Getting Started
 ### Prerequisites
