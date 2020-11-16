@@ -75,7 +75,7 @@ function App() {
             />
           )}
         {httpError && <ErrorCard cardColor="#FEC357" data={httpError} />}
-        {matches.complete_matches.length != 0 && (
+        {matches.complete_matches.length !== 0 && (
           <CardContainer
             title="SSN Last Name Match:"
             matchData={matches.complete_matches}
@@ -83,7 +83,7 @@ function App() {
             cardColor="#8D4982"
           />
         )}
-        {matches.partial_matches.length != 0 && (
+        {matches.partial_matches.length !== 0 && (
           <CardContainer
             title="Last Name Match Only:"
             matchData={matches.partial_matches}
