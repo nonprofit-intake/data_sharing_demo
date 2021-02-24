@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./NavMenu.css";
+import fpLogo from "../assets/fp_logo_2.png";
 
 import Navbar from "react-bootstrap/Navbar";
 
@@ -16,8 +17,8 @@ function NavMenu() {
     >
       <Navbar.Brand href="https://www.familypromiseofspokane.org/">
         <img
-          alt=""
-          src={require("../assets/fp_logo.png")}
+          alt="family-promise"
+          src={fpLogo}
           width="300"
         />
       </Navbar.Brand>
