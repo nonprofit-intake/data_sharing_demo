@@ -36,7 +36,7 @@ function App() {
     };
 
     const url =
-      "https://3yk0fzdvdh.execute-api.us-east-1.amazonaws.com/default/return_user_info";
+      "https://z0arg6enmk.execute-api.us-east-1.amazonaws.com/api/guests";
 
     axios
       .post(url, data)
