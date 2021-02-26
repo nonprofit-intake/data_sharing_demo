@@ -19,8 +19,8 @@ const emptyResponse = {
 };
 
 function App() {
-  const [matches, setMatches] = useState(emptyResponse);
   // const [matches, setMatches] = useState(tempResponse); // DEV
+  const [matches, setMatches] = useState(emptyResponse);
   const [isLoading, setIsLoading] = useState(false);
   const [postFetch, setPostFetch] = useState(false);
   const [httpError, setHttpError] = useState(null);
@@ -31,7 +31,7 @@ function App() {
 
     const data = {
       last_name: lastName.split(",").map((s) => s.trim()),
-      ssn: ssn.split(",").map((s) => s.trim()),
+      ssn: ssn.split(",").map((s) => parseInt(s)),
       pwd: password,
     };
 
