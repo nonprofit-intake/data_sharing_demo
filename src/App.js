@@ -10,16 +10,12 @@ import MatchForm from "./components/MatchForm";
 import ErrorCard from "./components/ErrorCard";
 import CardContainer from "./components/CardContainer";
 
-// FOR DEVELOPMENT
-// import tempResponse from "./tempResponse.js";
-
 const emptyResponse = {
   full_matches: [],
   partial_matches: [],
 };
 
 function App() {
-  // const [matches, setMatches] = useState(tempResponse); // DEV
   const [matches, setMatches] = useState(emptyResponse);
   const [isLoading, setIsLoading] = useState(false);
   const [postFetch, setPostFetch] = useState(false);
