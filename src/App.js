@@ -14,7 +14,7 @@ import CardContainer from "./components/CardContainer";
 // import tempResponse from "./tempResponse.js";
 
 const emptyResponse = {
-  complete_matches: [],
+  full_matches: [],
   partial_matches: [],
 };
 
@@ -47,11 +47,11 @@ function App() {
         setPostFetch(true);
       })
       .catch((error) => {
-        let errorMessage = error.response.data.errorMessage
+        const errorMessage = error.response.data.Message
           .split(":")
           .slice(-1)[0];
-        let defaultMatches = {
-          complete_matches: [],
+        const defaultMatches = {
+          full_matches: [],
           partial_matches: [],
         };
         setMatches(defaultMatches);
@@ -65,7 +65,7 @@ function App() {
       <NavMenu />
       <MatchForm submitEvent={fetchMatches} loading={isLoading} />
       <div className="resultsContainer">
-        {!matches.complete_matches.length &&
+        {!matches.full_matches.length &&
           !matches.partial_matches.length &&
           postFetch &&
           !httpError && (
@@ -75,10 +75,10 @@ function App() {
             />
           )}
         {httpError && <ErrorCard cardColor="#FEC357" data={httpError} />}
-        {matches.complete_matches.length !== 0 && (
+        {matches.full_matches.length !== 0 && (
           <CardContainer
             title="SSN Last Name Match:"
-            matchData={matches.complete_matches}
+            matchData={matches.full_matches}
             textColor="white"
             cardColor="#8D4982"
           />
