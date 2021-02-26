@@ -4,9 +4,13 @@ import "./ResultsCard.css";
 
 import Card from "react-bootstrap/Card";
 
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
+function capitalizeFullName(firstName, lastName) {
+  const names = [firstName, lastName]
+  const fullName = names.map(name => name.charAt(0).toUpperCase() + name.slice(1)).join(" ")
+  return fullName;
+};
+
+const notAvailable = "N/A"
 
 function ResultsCard(props) {
   return (
@@ -17,39 +21,38 @@ function ResultsCard(props) {
       style={{ background: props.cardColor }}
     >
       <Card.Header style={{ fontSize: "1.1rem", fontWeight: "bold" }}>
-        {capitalizeFirstLetter(props.matchData.first_name)}{" "}
-        {capitalizeFirstLetter(props.matchData.last_name)}
+        {capitalizeFullName(props.matchData.first_name, props.matchData.last_name)}
       </Card.Header>
       <Card.Body>
         <Card.Text>
           <b>Enrolled</b>:{" "}
           {props.matchData.enroll_date
             ? props.matchData.enroll_date
-            : "Not available"}
+            : notAvailable}
         </Card.Text>
         <Card.Text>
           <b>Exited</b>:{" "}
           {props.matchData.exit_date
             ? props.matchData.exit_date
-            : "Not available"}
+            : notAvailable}
         </Card.Text>
         <Card.Text>
           <b>Income at Entry</b>:{" "}
           {props.matchData.income_at_entry
             ? "$" + props.matchData.income_at_entry
-            : "Not available"}
+            : notAvailable}
         </Card.Text>
         <Card.Text>
           <b>Income at Exit</b>:{" "}
           {props.matchData.income_at_exit
             ? "$" + props.matchData.income_at_exit
-            : "Not available"}
+            : notAvailable}
         </Card.Text>
         <Card.Text>
           <b>Exit Destination</b>:{" "}
           {props.matchData.exit_destination
             ? props.matchData.exit_destination
-            : "Not available"}
+            : notAvailable}
         </Card.Text>
       </Card.Body>
     </Card>
