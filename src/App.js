@@ -70,7 +70,7 @@ function App() {
           !httpError && (
             <ErrorCard
               cardColor="#FEC357"
-              data={"No guests found with the given last name"}
+              errorMessage={"No guests found with the given last name(s)"}
             />
           )}
         {httpError && httpError !== "Invalid password" && (
