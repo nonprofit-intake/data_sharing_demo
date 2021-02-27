@@ -76,7 +76,7 @@ function App() {
         )}
         {matches.full_matches.length !== 0 && (
           <ResultsContainer
-            title="SSN and Last Name Found:"
+            title="Full Matches (SSN + Last Name)"
             matchData={matches.full_matches}
             textColor="white"
             cardColor="#8D4982"
@@ -84,7 +84,7 @@ function App() {
         )}
         {matches.partial_matches.length !== 0 && (
           <ResultsContainer
-            title="Last Name Found:"
+            title="Partial Matches (Last Name Only)"
             matchData={matches.partial_matches}
             textColor="white"
             cardColor="#006FBA"
