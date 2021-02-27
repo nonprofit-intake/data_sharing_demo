@@ -4,6 +4,7 @@ import axios from "axios";
 import "./App.css";
 
 import Container from "react-bootstrap/Container";
+import Alert from "react-bootstrap/Alert";
 
 import NavMenu from "./components/NavMenu";
 import MatchForm from "./components/MatchForm";
@@ -13,7 +14,7 @@ import ResultsContainer from "./components/ResultsContainer";
 const emptyResponse = {
   full_matches: [],
   partial_matches: [],
-  not_found: []
+  not_found: [],
 };
 
 function App() {
@@ -75,7 +76,11 @@ function App() {
           <ErrorCard cardColor="#FEC357" errorMessage={httpError} />
         )}
         {matches.not_found.length !== 0 && (
-          <span>{JSON.stringify(matches.not_found)}</span>
+          <Alert variant="danger" style={{ marginBottom: "3em" }}>
+            <Alert.Heading>The following last names were not found in our system:</Alert.Heading>
+            <hr/>
+            {matches.not_found.join(", ")}
+          </Alert>
         )}
         {matches.full_matches.length !== 0 && (
           <ResultsContainer
