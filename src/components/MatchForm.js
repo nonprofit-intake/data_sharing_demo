@@ -5,6 +5,7 @@ import "./MatchForm.css";
 import Form from "react-bootstrap/Form";
 import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
 
 function MatchForm(props) {
   const [lastName, setLastName] = useState("");
@@ -23,7 +24,7 @@ function MatchForm(props) {
         <Form.Control
           type="text"
           name="lastName"
-          placeholder="Separate multiple last names with a comma"
+          placeholder="Separate multiple last names with commas"
           value={lastName}
           onChange={(event) => setLastName(event.target.value)}
         />
@@ -35,7 +36,7 @@ function MatchForm(props) {
         <Form.Control
           type="text"
           name="ssn"
-          placeholder="Separate multiple SSNs with a comma"
+          placeholder="Separate multiple SSNs with commas"
           value={ssn}
           onChange={(event) => setSSN(event.target.value)}
         />
@@ -54,6 +55,12 @@ function MatchForm(props) {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
+        {props.errorMessage === "Invalid password" && (
+          <Alert variant={"danger"} style={{ marginTop: "0.5em" }}>
+            <b>{props.errorMessage}</b>: please try again or contact Family
+            Promise IT/Data Systems Manager.
+          </Alert>
+        )}
       </Form.Group>
       {props.loading ? (
         <Button style={{ background: "#006FBA" }} disabled>

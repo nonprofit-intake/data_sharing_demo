@@ -43,7 +43,7 @@ function App() {
         setPostFetch(true);
       })
       .catch((error) => {
-        console.log(JSON.stringify(error.response.data.Message))
+        console.log(JSON.stringify(error.response.data.Message));
         const errorMessage = error.response.data.Message.split(":")[1].trim();
         const defaultMatches = {
           full_matches: [],
@@ -58,7 +58,11 @@ function App() {
   return (
     <Container className="container">
       <NavMenu />
-      <MatchForm submitEvent={fetchMatches} loading={isLoading} />
+      <MatchForm
+        submitEvent={fetchMatches}
+        loading={isLoading}
+        errorMessage={httpError}
+      />
       <div className="resultsContainer">
         {!matches.full_matches.length &&
           !matches.partial_matches.length &&
