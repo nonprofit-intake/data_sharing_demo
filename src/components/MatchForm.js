@@ -33,7 +33,7 @@ function MatchForm(props) {
         />
       </Form.Group>
       <Form.Group>
-        <Form.Label style={formLabelStyles}>SSN(s)</Form.Label>
+        <Form.Label style={formLabelStyles}>Last 4 Digits of SSN(s)</Form.Label>
         <Form.Control
           type="text"
           name="ssn"
