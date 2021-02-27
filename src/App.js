@@ -43,9 +43,8 @@ function App() {
         setPostFetch(true);
       })
       .catch((error) => {
-        const errorMessage = error.response.data.Message
-          .split(":")
-          .slice(-1)[0];
+        console.log(JSON.stringify(error.response.data.Message))
+        const errorMessage = error.response.data.Message.split(":")[1].trim();
         const defaultMatches = {
           full_matches: [],
           partial_matches: [],
@@ -70,7 +69,9 @@ function App() {
               data={"No guests found with the given last name"}
             />
           )}
-        {httpError && <ErrorCard cardColor="#FEC357" data={httpError} />}
+        {httpError && httpError !== "Invalid password" && (
+          <ErrorCard cardColor="#FEC357" errorMessage={httpError} />
+        )}
         {matches.full_matches.length !== 0 && (
           <CardContainer
             title="SSN and Last Name Found:"
