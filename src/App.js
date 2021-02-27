@@ -13,6 +13,7 @@ import ResultsContainer from "./components/ResultsContainer";
 const emptyResponse = {
   full_matches: [],
   partial_matches: [],
+  not_found: []
 };
 
 function App() {
@@ -45,10 +46,7 @@ function App() {
       .catch((error) => {
         console.log(JSON.stringify(error.response.data.Message));
         const errorMessage = error.response.data.Message.split(":")[1].trim();
-        const defaultMatches = {
-          full_matches: [],
-          partial_matches: [],
-        };
+        const defaultMatches = emptyResponse;
         setMatches(defaultMatches);
         setIsLoading(false);
         setHttpError(errorMessage);
