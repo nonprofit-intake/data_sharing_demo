@@ -8,7 +8,7 @@ import Container from "react-bootstrap/Container";
 import NavMenu from "./components/NavMenu";
 import MatchForm from "./components/MatchForm";
 import ErrorCard from "./components/ErrorCard";
-import CardContainer from "./components/CardContainer";
+import ResultsContainer from "./components/ResultsContainer";
 
 const emptyResponse = {
   full_matches: [],
@@ -77,7 +77,7 @@ function App() {
           <ErrorCard cardColor="#FEC357" errorMessage={httpError} />
         )}
         {matches.full_matches.length !== 0 && (
-          <CardContainer
+          <ResultsContainer
             title="SSN and Last Name Found:"
             matchData={matches.full_matches}
             textColor="white"
@@ -85,7 +85,7 @@ function App() {
           />
         )}
         {matches.partial_matches.length !== 0 && (
-          <CardContainer
+          <ResultsContainer
             title="Last Name Found:"
             matchData={matches.partial_matches}
             textColor="white"

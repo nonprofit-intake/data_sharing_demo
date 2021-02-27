@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./CardContainer.css";
+import "./ResultsContainer.css";
 
 import Table from "react-bootstrap/Table";
 
@@ -23,7 +23,6 @@ function CardContainer(props) {
         <Table responsive>
           <thead>
             <tr>
-              <th>#</th>
               {console.log(props.matchData)}
               {Object.keys(props.matchData[0]).map((column, index) => (
                 <th key={index}>
@@ -35,7 +34,6 @@ function CardContainer(props) {
           <tbody>
             {props.matchData.map((match, index) => (
               <tr>
-                <td>{index + 1}</td>
                 {Object.values(match).map((field, index) => (
                   <td key={index}>{field ? field : "N/A"}</td>
                 ))}
