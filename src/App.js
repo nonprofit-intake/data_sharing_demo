@@ -74,6 +74,9 @@ function App() {
         {httpError && httpError !== "Invalid password" && (
           <ErrorCard cardColor="#FEC357" errorMessage={httpError} />
         )}
+        {matches.not_found.length !== 0 && (
+          <span>{JSON.stringify(matches.not_found)}</span>
+        )}
         {matches.full_matches.length !== 0 && (
           <ResultsContainer
             title="Full Matches (SSN + Last Name)"
