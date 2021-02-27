@@ -1,13 +1,11 @@
-.cardContainerTitle {
+.tableTitle {
   font-family: "Comfortaa", cursive;
   margin-bottom: 0.5em;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
-.cardContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.tableContainer {
   margin-bottom: 2em;
-  overflow: auto;
-  max-height: 35em;
 }

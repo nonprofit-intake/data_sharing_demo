@@ -18,8 +18,8 @@ function capitalizeList(words) {
 function CardContainer(props) {
   return (
     <>
-      <h2 className="cardContainerTitle">{props.title}</h2>
-      <div className="cardContainer">
+      <h2 className="tableTitle">{props.title}</h2>
+      <div className="tableContainer">
         <Table responsive>
           <thead>
             <tr>

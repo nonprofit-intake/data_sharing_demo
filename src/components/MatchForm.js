@@ -7,6 +7,11 @@ import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 
+const formLabelStyles = {
+  fontFamily: "Comfortaa, cursive",
+  fontWeight: "bold",
+};
+
 function MatchForm(props) {
   const [lastName, setLastName] = useState("");
   const [ssn, setSSN] = useState("");
@@ -18,9 +23,7 @@ function MatchForm(props) {
       onSubmit={(e) => props.submitEvent(e, lastName, ssn, password)}
     >
       <Form.Group>
-        <Form.Label style={{ fontFamily: "Comfortaa, cursive" }}>
-          Last Name(s)
-        </Form.Label>
+        <Form.Label style={formLabelStyles}>Last Name(s)</Form.Label>
         <Form.Control
           type="text"
           name="lastName"
@@ -30,9 +33,7 @@ function MatchForm(props) {
         />
       </Form.Group>
       <Form.Group>
-        <Form.Label style={{ fontFamily: "Comfortaa, cursive" }}>
-          SSN(s)
-        </Form.Label>
+        <Form.Label style={formLabelStyles}>SSN(s)</Form.Label>
         <Form.Control
           type="text"
           name="ssn"
@@ -45,9 +46,7 @@ function MatchForm(props) {
         </Form.Text>
       </Form.Group>
       <Form.Group>
-        <Form.Label style={{ fontFamily: "Comfortaa, cursive" }}>
-          Password
-        </Form.Label>
+        <Form.Label style={formLabelStyles}>Password</Form.Label>
         <Form.Control
           type="password"
           name="password"

@@ -61,7 +61,7 @@ function App() {
         loading={isLoading}
         errorMessage={httpError}
       />
-      <div className="resultsContainer">
+      <div className="allResultsContainer">
         {!matches.full_matches.length &&
           !matches.partial_matches.length &&
           postFetch &&
