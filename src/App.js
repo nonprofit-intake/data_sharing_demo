@@ -4,23 +4,21 @@ import axios from "axios";
 import "./App.css";
 
 import Container from "react-bootstrap/Container";
+import Alert from "react-bootstrap/Alert";
 
 import NavMenu from "./components/NavMenu";
 import MatchForm from "./components/MatchForm";
 import ErrorCard from "./components/ErrorCard";
-import CardContainer from "./components/CardContainer";
-
-// FOR DEVELOPMENT
-// import tempResponse from "./tempResponse.js";
+import ResultsContainer from "./components/ResultsContainer";
 
 const emptyResponse = {
-  complete_matches: [],
+  full_matches: [],
   partial_matches: [],
+  not_found: [],
 };
 
 function App() {
   const [matches, setMatches] = useState(emptyResponse);
-  // const [matches, setMatches] = useState(tempResponse); // DEV
   const [isLoading, setIsLoading] = useState(false);
   const [postFetch, setPostFetch] = useState(false);
   const [httpError, setHttpError] = useState(null);
@@ -31,12 +29,12 @@ function App() {
 
     const data = {
       last_name: lastName.split(",").map((s) => s.trim()),
-      ssn: ssn.split(",").map((s) => s.trim()),
+      ssn: ssn.split(",").map((s) => parseInt(s)),
       pwd: password,
     };
 
     const url =
-      "https://3yk0fzdvdh.execute-api.us-east-1.amazonaws.com/default/return_user_info";
+      "https://z0arg6enmk.execute-api.us-east-1.amazonaws.com/api/guests";
 
     axios
       .post(url, data)
@@ -47,13 +45,9 @@ function App() {
         setPostFetch(true);
       })
       .catch((error) => {
-        let errorMessage = error.response.data.errorMessage
-          .split(":")
-          .slice(-1)[0];
-        let defaultMatches = {
-          complete_matches: [],
-          partial_matches: [],
-        };
+        console.log(JSON.stringify(error.response.data.Message));
+        const errorMessage = error.response.data.Message.split(":")[1].trim();
+        const defaultMatches = emptyResponse;
         setMatches(defaultMatches);
         setIsLoading(false);
         setHttpError(errorMessage);
@@ -63,29 +57,42 @@ function App() {
   return (
     <Container className="container">
       <NavMenu />
-      <MatchForm submitEvent={fetchMatches} loading={isLoading} />
-      <div className="resultsContainer">
-        {!matches.complete_matches.length &&
+      <MatchForm
+        submitEvent={fetchMatches}
+        loading={isLoading}
+        errorMessage={httpError}
+      />
+      <div className="allResultsContainer">
+        {!matches.full_matches.length &&
           !matches.partial_matches.length &&
           postFetch &&
           !httpError && (
             <ErrorCard
               cardColor="#FEC357"
-              data={"No guests found with the given last name"}
+              errorMessage={"No guests found with the given last name(s)"}
             />
           )}
-        {httpError && <ErrorCard cardColor="#FEC357" data={httpError} />}
-        {matches.complete_matches.length !== 0 && (
-          <CardContainer
-            title="SSN Last Name Match:"
-            matchData={matches.complete_matches}
+        {httpError && httpError !== "Invalid password" && (
+          <ErrorCard cardColor="#FEC357" errorMessage={httpError} />
+        )}
+        {matches.not_found.length !== 0 && (
+          <Alert variant="danger" style={{ marginBottom: "3em" }}>
+            <Alert.Heading>The following last names were not found in our system:</Alert.Heading>
+            <hr/>
+            {matches.not_found.join(", ")}
+          </Alert>
+        )}
+        {matches.full_matches.length !== 0 && (
+          <ResultsContainer
+            title="Full Matches (SSN + Last Name)"
+            matchData={matches.full_matches}
             textColor="white"
             cardColor="#8D4982"
           />
         )}
         {matches.partial_matches.length !== 0 && (
-          <CardContainer
-            title="Last Name Match Only:"
+          <ResultsContainer
+            title="Partial Matches (Last Name Only)"
             matchData={matches.partial_matches}
             textColor="white"
             cardColor="#006FBA"

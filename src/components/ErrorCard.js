@@ -10,7 +10,7 @@ function ErrorCard(props) {
       className="errorCard"
       style={{ background: props.cardColor, alignItems: "center" }}
     >
-      <Card.Body>{props.data}</Card.Body>
+      <Card.Body><b>Error</b>: {props.errorMessage}</Card.Body>
     </Card>
   );
 }

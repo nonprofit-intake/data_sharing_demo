@@ -1,0 +1,11 @@
+.tableTitle {
+  font-family: "Comfortaa", cursive;
+  margin-bottom: 0.5em;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.tableContainer {
+  margin-bottom: 2em;
+}

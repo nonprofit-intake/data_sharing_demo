@@ -1,4 +1,3 @@
-.resultsContainer {
-  display: flex;
-  flex-direction: column;
+.allResultsContainer {
+  margin-top: 2.5em;
 }

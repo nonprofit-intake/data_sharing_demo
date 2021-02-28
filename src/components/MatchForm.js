@@ -5,6 +5,12 @@ import "./MatchForm.css";
 import Form from "react-bootstrap/Form";
 import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
+
+const formLabelStyles = {
+  fontFamily: "Comfortaa, cursive",
+  fontWeight: "bold",
+};
 
 function MatchForm(props) {
   const [lastName, setLastName] = useState("");
@@ -17,25 +23,21 @@ function MatchForm(props) {
       onSubmit={(e) => props.submitEvent(e, lastName, ssn, password)}
     >
       <Form.Group>
-        <Form.Label style={{ fontFamily: "Comfortaa, cursive" }}>
-          Last Name(s)
-        </Form.Label>
+        <Form.Label style={formLabelStyles}>Last Name(s)</Form.Label>
         <Form.Control
           type="text"
           name="lastName"
-          placeholder="Separate multiple last names with a comma"
+          placeholder="Separate multiple last names with commas"
           value={lastName}
           onChange={(event) => setLastName(event.target.value)}
         />
       </Form.Group>
       <Form.Group>
-        <Form.Label style={{ fontFamily: "Comfortaa, cursive" }}>
-          SSN(s)
-        </Form.Label>
+        <Form.Label style={formLabelStyles}>Last 4 Digits of SSN(s)</Form.Label>
         <Form.Control
           type="text"
           name="ssn"
-          placeholder="Separate multiple SSNs with a comma"
+          placeholder="Separate multiple SSNs with commas"
           value={ssn}
           onChange={(event) => setSSN(event.target.value)}
         />
@@ -44,9 +46,7 @@ function MatchForm(props) {
         </Form.Text>
       </Form.Group>
       <Form.Group>
-        <Form.Label style={{ fontFamily: "Comfortaa, cursive" }}>
-          Password
-        </Form.Label>
+        <Form.Label style={formLabelStyles}>Password</Form.Label>
         <Form.Control
           type="password"
           name="password"
@@ -54,6 +54,12 @@ function MatchForm(props) {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
+        {props.errorMessage === "Invalid password" && (
+          <Alert variant={"danger"} style={{ marginTop: "0.5em" }}>
+            <b>{props.errorMessage}</b>: please try again or contact Family
+            Promise IT/Data Systems Manager.
+          </Alert>
+        )}
       </Form.Group>
       {props.loading ? (
         <Button style={{ background: "#006FBA" }} disabled>
